@@ -8,7 +8,7 @@ React demo site program by typescript
 - Incomplete package management(npm install --force).
 - The test code is still incomplete.
 
-## Development(2)
+## Development
 | Item   | Ver. |Remarks|
 |--------|--------|--------|
 | cpu     | Intel(R) Core(TM) i7-10510U CPU @ 1.80GHz ||
