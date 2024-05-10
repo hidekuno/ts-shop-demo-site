@@ -1,0 +1,57 @@
+.header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid #d0d0d0;
+}
+a {
+    text-decoration: none;
+    color: #484848;
+    transition: 0.3s ease-out;
+}
+a:hover {
+    color: #7fbfff;
+}
+
+.shop_username {
+    margin: 0 0 0 auto;
+}
+.shop_item {
+    text-align: left;
+    font-weight: bold;
+}
+.shop_artist {
+    font-size: 12px;
+    font-weight: bold;
+}
+.shop_description {
+    font-size: 12px;
+    max-width: 300px;
+}
+.shop_price {
+    text-align: center;
+    font-weight: bold;
+}
+.cart_item {
+    font-size: 1.0rem;
+    margin: 0;
+    font-weight: bold;
+}
+.cart_artist {
+    font-size: 1.0rem;
+    margin: 0;
+    width: 300px;
+}
+.cart_price {
+    margin: 0;
+}
+.cart_qty {
+    font-size: 1.0rem;
+    margin-left: 1.0rem;
+    margin-right: 1.0rem;
+}
+.cart_title {
+    font-weight: bold;
+    font-size: 1.25rem;
+}

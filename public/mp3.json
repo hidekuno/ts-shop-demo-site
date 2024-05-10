@@ -1,0 +1,50 @@
+[
+    {
+        "id": 71,
+        "title": "Autobahn",
+        "artist": "Kraftwerk",
+        "price": 25,
+        "description": "Autobahn is the fourth studio album by German electronic music band Kraftwerk, released in November 1974 by Philips Records. The album marked several personnel changes in the band, which was initially a duo consisting of Florian Schneider and Ralf Hütter; later, the group added Klaus Röder on guitar and flute, and Wolfgang Flür on percussion. The album also completed the group's transition from the experimental krautrock style of their earlier work to an electronic pop sound consisting mostly of synthesizers and drum machines. Recording started at the group's own Kling Klang facility, but was predominantly made at Conny Plank's studio. Autobahn also includes lyrics and a new look for the group that was suggested by Emil Schult, an associate of Schneider and Hütter.",
+        "imageUrl": "https://m.media-amazon.com/images/I/517mWFDZMbL._AC_SX320_.jpg"
+    },
+    {
+        "id": 72,
+        "title": "Trans Europa Express",
+        "artist": "Kraftwerk",
+        "price": 23,
+        "description": "Trans-Europe Express (German: Trans Europa Express) is the sixth studio album by German band Kraftwerk. Recorded in 1976 in Düsseldorf, Germany, the album was released in March 1977 on Kling Klang Records. It saw the group refine their melodic electronic style, with a focus on sequenced rhythms, minimalism, and occasionally manipulated vocals. The themes include celebrations of the titular European railway service and Europe as a whole, and meditations on the disparities between reality and appearance.",
+        "imageUrl": "https://m.media-amazon.com/images/I/71PekB5GDPL._AC_SX320_.jpg"
+    },
+    {
+        "id": 73,
+        "title": "The Man Machine",
+        "artist": "Kraftwerk",
+        "price": 21,
+        "description": "The Man-Machine (German: Die Mensch-Maschine) is the seventh studio album by German electronic music band Kraftwerk. It was released in May 1978 by Kling Klang in Germany and by Capitol Records elsewhere. A further refinement of their mechanical style, the album saw the group incorporate more danceable rhythms. The album has a satirical bent to it. It is thought to address a wide-range of themes from the Cold War, Germany's fascination with manufacturing, and humankind's increasingly symbiotic relationship with machines. It includes the singles \"The Model\" and \"The Robots\".",
+        "imageUrl": "https://m.media-amazon.com/images/I/81GyoilQ1EL._AC_SX320_.jpg"
+    },
+    {
+        "id": 74,
+        "title": "Low",
+        "artist": "David Bowie",
+        "price": 20,
+        "description": "Low is the eleventh studio album by the English musician David Bowie, released on 14 January 1977 through RCA Records. The first of three collaborations with the producer Tony Visconti and the musician Brian Eno that became known as the Berlin Trilogy, the project originated following Bowie's move to France in 1976 with his friend Iggy Pop to rid themselves of their drug addictions. There, Bowie produced and co-wrote Pop's debut studio album, The Idiot, featuring sounds the former would explore on his next record. After completing The Idiot, sessions for Low began at Hérouville's Château d'Hérouville in September 1976 and ended in October at Hansa Studios in West Berlin, where Bowie and Pop had relocated.",
+        "imageUrl": "https://m.media-amazon.com/images/I/81s+UFcFaUL._AC_SX320_.jpg"
+    },
+    {
+        "id": 75,
+        "title": "BGM",
+        "artist": "YMO",
+        "price": 24,
+        "description": "BGM is the fourth studio album by Yellow Magic Orchestra, released on March 21, 1981. The title stands for \"Background music\", though Japanese TV and press advertising alternately used \"Beautiful Grotesque Music\". This album was produced by Haruomi Hosono. Recording started on January 15, 1981, in an effort to release the album by March 21, 1981. The album was the first of any kind to feature the Roland TR-808, one of the earliest programmable drum machines; YMO had already been the first band to use the device, featuring it on-stage as early as 1980. In addition to the TR-808, this was also their first studio album recorded with the Roland MC-4 Microcomposer.",
+        "imageUrl": "https://m.media-amazon.com/images/I/51hU2dhkD1L._AC_SX320_.jpg"
+    },
+    {
+        "id": 76,
+        "title": "Technodelic",
+        "artist": "YMO",
+        "price": 24,
+        "description": "Technodelic is the fifth studio album by Yellow Magic Orchestra, released in 1981. The album is notable for its experimental approach and heavy use of digital samplers which were not commonly used until the mid-to-late 1980s, resulting in a more minimalist and avant-garde sound compared to their previous work.",
+        "imageUrl": "https://m.media-amazon.com/images/I/61C54-c9rWL._AC_SX320_.jpg"
+    }
+]
