@@ -4,16 +4,14 @@
  * hidekuno@gmail.com
  *
  */
-import React from 'react';
 import { render } from '@testing-library/react';
 import { Store, Order, Cart } from '../App';
 import { Signin } from '../components/Signin';
 import { StoreContextProvider } from '../store';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Shop } from '../components/Shop';
-import { Header } from '../components/Header';
 import { Cart as CartPart } from '../components/Cart';
-import fs from 'fs';
+import * as fs from 'fs';
 
 
 export class Response {

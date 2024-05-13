@@ -7,14 +7,12 @@
 import '@testing-library/jest-dom';
 import {screen, waitFor, fireEvent,} from '@testing-library/react';
 import {cartReducer} from '../reducers/cartReducer';
-import {DEL_POINT, SIGNIN_USERNAME} from '../constants';
-import {shopReducer} from '../reducers/shopReducer';
+import {DEL_POINT, } from '../constants';
 import {testRender} from './common';
-import {act} from 'react';
 
 export const Response = class {
   status: number;
-  constructor(uri: string) {
+  constructor(_uri: string) {
     this.status = 400;
   }
 }
