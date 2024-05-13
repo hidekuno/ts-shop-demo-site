@@ -4,7 +4,7 @@
  * hidekuno@gmail.com
  *
  */
-import {screen, waitFor, fireEvent,} from '@testing-library/react';
+import {screen, fireEvent,} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {testRender, Response} from './common';
 import {act} from 'react';

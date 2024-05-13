@@ -27,7 +27,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
   const menubar: React.CSSProperties = { minHeight: '20px', height: '20px' };
   const [value, setValue] = useState<number>(props.index);
 
-  const handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+  const handleTabChange = (_event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
     navigate(menuLinks[newValue]);
   };

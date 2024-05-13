@@ -4,9 +4,9 @@
  * hidekuno@gmail.com
  *
  */
-import {screen, waitFor, fireEvent, within} from '@testing-library/react'
+import {screen, waitFor, fireEvent} from '@testing-library/react'
 import '@testing-library/jest-dom'
-import {testRender, testLoginRender, Response} from './common';
+import {testLoginRender, Response} from './common';
 import {act} from 'react';
 
 global.fetch = jest.fn().mockImplementation(() => new Response('public/cd-mini.json'));
