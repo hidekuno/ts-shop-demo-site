@@ -4,8 +4,8 @@
  * hidekuno@gmail.com
  *
  */
-import {screen, waitFor, fireEvent} from '@testing-library/react'
-import '@testing-library/jest-dom'
+import {screen, waitFor, fireEvent} from '@testing-library/react';
+import '@testing-library/jest-dom';
 import {testLoginRender, Response} from './common';
 import {act} from 'react';
 
@@ -14,7 +14,7 @@ global.fetch = jest.fn().mockImplementation(() => new Response('public/cd-mini.j
 if (!AbortSignal.timeout) {
   AbortSignal.timeout = (ms) => {
     const controller = new AbortController();
-    setTimeout(() => controller.abort(new DOMException("TimeoutError")), ms);
+    setTimeout(() => controller.abort(new DOMException('TimeoutError')), ms);
     return controller.signal;
   };
 }
@@ -43,7 +43,7 @@ describe('unit test link', () => {
     expect(screen.getByText(/Sign in to CD Shop/)).toBeInTheDocument();
   });
   test('tab', async () => {
-    await act(() => { testLoginRender() });
+    await act(() => { testLoginRender(); });
 
     const textUser = screen.getByRole('textbox', {name: 'Username'});
     fireEvent.change(textUser, {target: {value: 'testtaro'}});
@@ -64,7 +64,7 @@ describe('unit test link', () => {
     expect(screen.getByText(/Order History/)).toBeInTheDocument();
 
     await act(() => {
-       fireEvent.click(screen.getByRole('tab', {name: 'Cart', selected: false }));
+      fireEvent.click(screen.getByRole('tab', {name: 'Cart', selected: false}));
     });
     expect(screen.getByText(/There are no items in your cart./)).toBeInTheDocument();
 
@@ -73,7 +73,7 @@ describe('unit test link', () => {
     });
   });
   test('order', async () => {
-    await act(() => { testLoginRender() });
+    await act(() => { testLoginRender(); });
 
     const textUser = screen.getByRole('textbox', {name: 'Username'});
     fireEvent.change(textUser, {target: {value: 'testtaro'}});
@@ -94,7 +94,7 @@ describe('unit test link', () => {
       fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[1]);
     });
     await act(() => {
-       fireEvent.click(screen.getByRole('tab', {name: 'Cart', selected: false }));
+      fireEvent.click(screen.getByRole('tab', {name: 'Cart', selected: false}));
     });
     await act(() => {
       fireEvent.click(screen.getByRole('button', {name: 'Buy'}));
@@ -116,7 +116,7 @@ describe('unit test link', () => {
     expect(screen.getByText(/Order History/)).toBeInTheDocument();
     expect(screen.getByText('Revolver')).toBeInTheDocument();
     expect(screen.getByText('Pet Shop Sounds')).toBeInTheDocument();
-    expect(screen.getAllByText('\$48')).toHaveLength(2);
-    expect(screen.getByText('\$25')).toBeInTheDocument();
+    expect(screen.getAllByText('$48')).toHaveLength(2);
+    expect(screen.getByText('$25')).toBeInTheDocument();
   });
 });

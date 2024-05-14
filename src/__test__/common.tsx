@@ -4,13 +4,13 @@
  * hidekuno@gmail.com
  *
  */
-import { render } from '@testing-library/react';
-import { Store, Order, Cart } from '../App';
-import { Signin } from '../components/Signin';
-import { StoreContextProvider } from '../store';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Shop } from '../components/Shop';
-import { Cart as CartPart } from '../components/Cart';
+import {render} from '@testing-library/react';
+import {Store, Order, Cart} from '../App';
+import {Signin} from '../components/Signin';
+import {StoreContextProvider} from '../store';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {Shop} from '../components/Shop';
+import {Cart as CartPart} from '../components/Cart';
 import * as fs from 'fs';
 
 

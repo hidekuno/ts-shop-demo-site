@@ -4,14 +4,14 @@
  * hidekuno@gmail.com
  *
  */
-import React, { useContext, useState, useEffect } from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import Link from '@mui/material/Link';
-import { useNavigate, useLocation } from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
 import '../App.css';
-import { ShopContext, CartContext } from '../store';
+import {ShopContext, CartContext} from '../store';
 
 interface HeaderProps {
   index: number;
@@ -24,10 +24,10 @@ export const Header: React.FC<HeaderProps> = (props) => {
   const state = useContext(ShopContext).state;
   const cart = useContext(CartContext).state;
   const navigate = useNavigate();
-  const menubar: React.CSSProperties = { minHeight: '20px', height: '20px' };
+  const menubar: React.CSSProperties = {minHeight: '20px', height: '20px'};
   const [value, setValue] = useState<number>(props.index);
 
-  const handleTabChange = (_event: React.ChangeEvent<{}>, newValue: number) => {
+  const handleTabChange = (_event: React.ChangeEvent<object>, newValue: number) => {
     setValue(newValue);
     navigate(menuLinks[newValue]);
   };
@@ -41,15 +41,15 @@ export const Header: React.FC<HeaderProps> = (props) => {
   return (
     <header className="header">
       CD Shop <i><b>Demo</b></i> Site
-      <Tabs sx={{ ...menubar, marginLeft: '5%' }} value={value} onChange={handleTabChange} aria-label="menu">
-        <Tab label='Shop' component="a" sx={{ ...menubar, width: '55px', minWidth: '55px' }} />
-        <Tab label='Cart' component="a" sx={{ ...menubar, width: '55px', minWidth: '55px' }} />
-        <Tab label='Order' component="a" sx={{ ...menubar, width: '60px', minWidth: '60px' }} />
+      <Tabs sx={{...menubar, marginLeft: '5%'}} value={value} onChange={handleTabChange} aria-label="menu">
+        <Tab label='Shop' component="a" sx={{...menubar, width: '55px', minWidth: '55px'}} />
+        <Tab label='Cart' component="a" sx={{...menubar, width: '55px', minWidth: '55px'}} />
+        <Tab label='Order' component="a" sx={{...menubar, width: '60px', minWidth: '60px'}} />
       </Tabs>
       <p className='shop_username'>{state.username}</p>
       {
         menuLinks.slice(0, 2).includes(path) &&
-        <span style={{ fontWeight: 'bold', color: '#e3811e' }}>Your Point: {cart.point}</span>
+        <span style={{fontWeight: 'bold', color: '#e3811e'}}>Your Point: {cart.point}</span>
       }
       <Link underline='hover' href='#' onClick={() => navigate('/shop')}>Home</Link>
       <Link underline='hover' href='' onClick={() => navigate('/')}>Sign out</Link>

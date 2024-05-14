@@ -4,7 +4,7 @@
  * hidekuno@gmail.com
  *
  */
-import React, { useContext } from 'react';
+import React, {useContext} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -15,10 +15,10 @@ import Box from '@mui/material/Box';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
-import { ShopContext } from '../store';
-import { signinUsername } from '../actions/shopAction';
+import {ShopContext} from '../store';
+import {signinUsername} from '../actions/shopAction';
 
 export const Signin: React.FC = () => {
   const navigate = useNavigate();
@@ -46,13 +46,13 @@ export const Signin: React.FC = () => {
           alignItems: 'center',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
+        <Avatar sx={{m: 1, bgcolor: 'primary.main'}}>
           <LibraryMusicIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign in to CD Shop <i><b>Demo</b></i> Site
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleSubmit} sx={{mt: 1}}>
           <TextField
             margin="normal"
             required
@@ -61,7 +61,7 @@ export const Signin: React.FC = () => {
             label="Username"
             name="username"
             autoComplete="username"
-            inputProps={{ maxLength: 32 }}
+            inputProps={{maxLength: 32}}
           />
           <TextField
             margin="normal"
@@ -81,7 +81,7 @@ export const Signin: React.FC = () => {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{mt: 3, mb: 2}}
           >
             Sign In
           </Button>
