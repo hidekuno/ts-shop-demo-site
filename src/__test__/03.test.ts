@@ -7,22 +7,23 @@
 import '@testing-library/jest-dom';
 import {screen, waitFor, fireEvent,} from '@testing-library/react';
 import {cartReducer} from '../reducers/cartReducer';
-import {DEL_POINT, } from '../constants';
+import {DEL_POINT,} from '../constants';
 import {testRender} from './common';
 
 export const Response = class {
   status: number;
+
   constructor(_uri: string) {
     this.status = 400;
   }
-}
+};
 
 global.fetch = jest.fn().mockImplementation(() => new Response('public/cd-mini.json'));
 
 if (!AbortSignal.timeout) {
   AbortSignal.timeout = (ms) => {
     const controller = new AbortController();
-    setTimeout(() => controller.abort(new DOMException("TimeoutError")), ms);
+    setTimeout(() => controller.abort(new DOMException('TimeoutError')), ms);
     return controller.signal;
   };
 }
@@ -41,13 +42,13 @@ describe('unit test etc', () => {
   //     .toThrow(new Error('No such action type'));
   // })
   test('cart test zero eq', async () => {
-    let rec = cartReducer({point: 0, cart:[]}, {type: DEL_POINT, payload: {point: 10},});
+    const rec = cartReducer({point: 0, cart:[]}, {type: DEL_POINT, payload: {point: 10},});
     expect(rec.point).toEqual(0);
-  })
+  });
   test('fetch error test', async () => {
     await waitFor(() => testRender());
     expect(console.error).toBeCalled();
     const button = screen.getByTestId('CloseIcon');
     fireEvent.click(button);
-  })
-})
+  });
+});

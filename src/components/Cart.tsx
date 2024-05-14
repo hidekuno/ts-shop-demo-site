@@ -4,27 +4,27 @@
  * hidekuno@gmail.com
  *
  */
-import React, { useRef, useState, useContext } from "react";
-import { CSSProperties } from '@mui/material/styles/createTypography';
-import Delete from "@mui/icons-material/Delete";
-import Payment from "@mui/icons-material/Payment";
-import Button from "@mui/material/Button";
-import Container from "@mui/material/Container";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
-import Switch from "@mui/material/Switch";
-import TextField from "@mui/material/TextField";
+import React, {useRef, useState, useContext} from 'react';
+import {CSSProperties} from '@mui/material/styles/createTypography';
+import Delete from '@mui/icons-material/Delete';
+import Payment from '@mui/icons-material/Payment';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
+import Switch from '@mui/material/Switch';
+import TextField from '@mui/material/TextField';
 
-import { CartContext, ShopContext } from "../store";
-import { addOrder } from '../actions/shopAction';
-import { COMPLETE_MESSAGE, NOCART_MESSAGE } from '../constants';
-import { clearToCart, delPoint, addPoint,delToCart } from '../actions/cartAction';
-import { CartAction, CartState, CartItem }  from '../reducers/cartReducer';
+import {CartContext, ShopContext} from '../store';
+import {addOrder} from '../actions/shopAction';
+import {COMPLETE_MESSAGE, NOCART_MESSAGE} from '../constants';
+import {clearToCart, delPoint, addPoint,delToCart} from '../actions/cartAction';
+import {CartAction, CartState, CartItem}  from '../reducers/cartReducer';
 
 export const cartClass: CSSProperties = {
   margin: '0.5rem',
@@ -42,7 +42,9 @@ export const dialogClass: CSSProperties = {
 };
 export class Sale {
   cartItems: CartItem[];
+
   userPoint: number;
+
   totalPrices: number;
 
   constructor(state: CartState) {
@@ -72,14 +74,18 @@ export class Sale {
 }
 export class TextValidation {
   value: string;
+
   setValue: React.Dispatch<React.SetStateAction<string>>;
+
   error: boolean;
+
   setError: React.Dispatch<React.SetStateAction<boolean>>;
+
   ref: React.RefObject<HTMLInputElement>;
 
   constructor(value: [string,React.Dispatch<React.SetStateAction<string>>],
-              error: [boolean, React.Dispatch<React.SetStateAction<boolean>>],
-              ref: React.RefObject<HTMLInputElement>) {
+    error: [boolean, React.Dispatch<React.SetStateAction<boolean>>],
+    ref: React.RefObject<HTMLInputElement>) {
     this.value = value[0];
     this.setValue = value[1];
     this.error = error[0];
@@ -103,7 +109,7 @@ export class TextValidation {
   }
 }
 export const Cart: React.FC = () => {
-  const { state, dispatch } = useContext(CartContext);
+  const {state, dispatch} = useContext(CartContext);
   const dispatchShop = useContext(ShopContext).dispatch;
 
   const [open, setOpen] = useState(false);
@@ -130,7 +136,7 @@ export const Cart: React.FC = () => {
     }
     sale.dispatchWrap(dispatch, checked);
     initUi();
-    dispatchShop(addOrder({ total: sale.totalPrices, payment: sale.calcTotalPrices(checked), detail: sale.cartItems }));
+    dispatchShop(addOrder({total: sale.totalPrices, payment: sale.calcTotalPrices(checked), detail: sale.cartItems}));
     setMessage(COMPLETE_MESSAGE);
   };
 
@@ -154,9 +160,9 @@ export const Cart: React.FC = () => {
   const cart = sale.cartItems.map((item: CartItem) => (
     <Container
       key={item.id}
-      sx={{ display: 'flex', alignItems: 'center', margin: '0.1rem' }}>
+      sx={{display: 'flex', alignItems: 'center', margin: '0.1rem'}}>
       <img src={item.imageUrl} width='45px' height='45px' alt={item.title} />
-      <Container sx={{ width: '600px', marginLeft: '0.2rem' }}>
+      <Container sx={{width: '600px', marginLeft: '0.2rem'}}>
         <p className='cart_item'>{item.title}</p>
       </Container>
       <p className='cart_artist'>{item.artist}</p>
@@ -175,7 +181,7 @@ export const Cart: React.FC = () => {
   return (
     <Container sx={cartClass}>
       <p className='cart_title'>In your cart</p>
-      <Container sx={{ marginTop: '0.1rem' }}>{cart}</Container>
+      <Container sx={{marginTop: '0.1rem'}}>{cart}</Container>
       <Container
         sx={{
           marginTop: '0.5rem',
@@ -191,7 +197,7 @@ export const Cart: React.FC = () => {
           color='primary'
           onClick={() => setOpen(true)}
           startIcon={<Payment />}
-          sx={{ marginLeft: '2.0rem' }}>
+          sx={{marginLeft: '2.0rem'}}>
           Buy
         </Button>
       </Container>
@@ -199,48 +205,48 @@ export const Cart: React.FC = () => {
         <DialogTitle>{'Confirm'}</DialogTitle>
         <DialogContent>
           <DialogContentText sx={dialogClass}>
-            <span style={{ color: '#1976d2' }}> Your Point: ${sale.calcPoint(checked)} </span>
+            <span style={{color: '#1976d2'}}> Your Point: ${sale.calcPoint(checked)} </span>
             <FormControlLabel
-              sx={{ paddingLeft: '1rem' }}
+              sx={{paddingLeft: '1rem'}}
               disabled={sale.userPoint <= 0}
               control={<Switch checked={checked} onChange={(e) => setChecked(e.target.checked)} name='points' />}
               label='Use Points' />
           </DialogContentText>
-          <FormGroup sx={{ marginLeft: '0.5rem' }}>
+          <FormGroup sx={{marginLeft: '0.5rem'}}>
             <TextField
               id='email-address'
               label='Email'
               margin='dense'
-              sx={{ m: 1, width: '50ch' }}
+              sx={{m: 1, width: '50ch'}}
               type='email'
               variant='standard'
               inputRef={mailAddr.ref}
               value={mailAddr.value}
               error={mailAddr.error}
               helperText={mailAddr.helpText()}
-              inputProps={{ required: true }}
+              inputProps={{required: true}}
               onChange={(e) => { mailAddr.handleChange(e); } }
               required />
             <TextField
               id='recipient-address'
               label='Address'
               margin='dense'
-              sx={{ m: 1, width: '50ch' }}
+              sx={{m: 1, width: '50ch'}}
               variant='standard'
               inputRef={recipientAddr.ref}
               value={recipientAddr.value}
               error={recipientAddr.error}
               helperText={recipientAddr.helpText()}
-              inputProps={{ required: true }}
+              inputProps={{required: true}}
               onChange={(e) => { recipientAddr.handleChange(e); } }
               required />
           </FormGroup>
         </DialogContent>
         <DialogContent>
-          <DialogContentText sx={{ ...dialogClass, color: 'success.dark' }}>
+          <DialogContentText sx={{...dialogClass, color: 'success.dark'}}>
             Total Amount: ${sale.calcTotalPrices(checked)}
           </DialogContentText>
-          <DialogContentText sx={{ marginTop: '1.5rem', textAlign: 'center' }}>
+          <DialogContentText sx={{marginTop: '1.5rem', textAlign: 'center'}}>
             Would you like to buy?
           </DialogContentText>
         </DialogContent>

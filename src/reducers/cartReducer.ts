@@ -4,8 +4,8 @@
  * hidekuno@gmail.com
  *
  */
-import { MusicItem } from '../data';
-import { ADD_ITEM, DEL_ITEM, CLEAR_ITEMS, ADD_POINT, DEL_POINT } from '../constants';
+import {MusicItem} from '../data';
+import {ADD_ITEM, DEL_ITEM, CLEAR_ITEMS, ADD_POINT, DEL_POINT} from '../constants';
 
 export interface CartItem  {
   id: number;
@@ -15,19 +15,19 @@ export interface CartItem  {
   imageUrl: string;
   qty: number;
   totalPrice: number;
-};
+}
 
 export interface CartState {
   cart: CartItem[];
   point: number;
-};
+}
 
 export type CartAction =
-    { type: 'ADD_ITEM'; payload: MusicItem }
-  | { type: 'DEL_ITEM'; payload: CartItem }
-  | { type: 'CLEAR_ITEMS' }
-  | { type: 'ADD_POINT'; payload: {point: number} }
-  | { type: 'DEL_POINT'; payload: {point: number} };
+  | {type: 'ADD_ITEM'; payload: MusicItem}
+  | {type: 'DEL_ITEM'; payload: CartItem}
+  | {type: 'CLEAR_ITEMS'}
+  | {type: 'ADD_POINT'; payload: {point: number}}
+  | {type: 'DEL_POINT'; payload: {point: number}};
 
 const getItem = (cart: CartItem[], id: number): CartItem | undefined =>
   cart.find((item) => item.id === id);
@@ -55,7 +55,7 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
               ...deleteItem(state.cart, action.payload.id),
             ];
           } else {
-            const { id, title, artist, price, imageUrl } = action.payload;
+            const {id, title, artist, price, imageUrl} = action.payload;
             return [
               {
                 id,
@@ -93,14 +93,14 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
       };
     }
     case CLEAR_ITEMS:
-      return { ...state, cart: [] };
+      return {...state, cart: []};
 
     case ADD_POINT:
-      return { ...state, point: state.point + action.payload.point };
+      return {...state, point: state.point + action.payload.point};
 
     case DEL_POINT: {
       const point = state.point - action.payload.point;
-      return { ...state, point: Math.max(0, point) };
+      return {...state, point: Math.max(0, point)};
     }
     // It's dead code
     // default:

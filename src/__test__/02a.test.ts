@@ -13,27 +13,27 @@ global.fetch = jest.fn().mockImplementation(() => new Response('public/cd-mini.j
 if (!AbortSignal.timeout) {
   AbortSignal.timeout = (ms) => {
     const controller = new AbortController();
-    setTimeout(() => controller.abort(new DOMException("TimeoutError")), ms);
+    setTimeout(() => controller.abort(new DOMException('TimeoutError')), ms);
     return controller.signal;
   };
 }
 
 describe('unit test', () => {
   test('dialog ok click test', async () => {
-    await act(() => { testRender() })
+    await act(() => { testRender(); });
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0])
+      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0]);
     });
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0])
+      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0]);
     });
     await act(() => {
-      fireEvent.click(screen.getByRole('button', {name: 'Buy'}))
+      fireEvent.click(screen.getByRole('button', {name: 'Buy'}));
     });
     await act(() => {
-      const switchElement = screen.getByLabelText('Use Points')
-      fireEvent.click(switchElement)
-      fireEvent.change(switchElement, { target: { checked: true }})
+      const switchElement = screen.getByLabelText('Use Points');
+      fireEvent.click(switchElement);
+      fireEvent.change(switchElement, {target: {checked: true}});
     });
     expect(screen.getByText('Your Point: $50')).toBeInTheDocument();
     expect(screen.getByText('Total Amount: $0')).toBeInTheDocument();
@@ -43,29 +43,29 @@ describe('unit test', () => {
     fireEvent.change(textAddress, {target: {value: 'Osaka,Japan'}});
 
     await act(() => {
-      fireEvent.click(screen.getByRole('button', {name: 'OK'}))
+      fireEvent.click(screen.getByRole('button', {name: 'OK'}));
     });
     expect(screen.getByText('Complete')).toBeInTheDocument();
     expect(screen.getByText(/Thanks for your purchase./)).toBeInTheDocument();
     expect(screen.getByText(/\(This is a Demo Program.\)/)).toBeInTheDocument();
 
     await act(() => {
-      fireEvent.click(screen.getByRole('button', {name: 'Close'}))
+      fireEvent.click(screen.getByRole('button', {name: 'Close'}));
     });
     expect(screen.getByText('There are no items in your cart.')).toBeInTheDocument();
-  })
+  });
   test('dialog escape key test', async () => {
     await act(() => testRender());
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0])
+      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0]);
     });
     await act(() => {
-      fireEvent.click(screen.getByRole('button', {name: 'Buy'}))
+      fireEvent.click(screen.getByRole('button', {name: 'Buy'}));
     });
     await act(() => {
       const switchElement = screen.getByLabelText('Use Points');
       fireEvent.click(switchElement);
-      fireEvent.change(switchElement, { target: { checked: true }});
+      fireEvent.change(switchElement, {target: {checked: true}});
     });
     expect(screen.getByText('Your Point: $75')).toBeInTheDocument();
     expect(screen.getByText('Total Amount: $0')).toBeInTheDocument();
@@ -76,7 +76,7 @@ describe('unit test', () => {
 
     await act(() => {
       fireEvent.click(screen.getByRole('button', {name: 'OK'}));
-    })
+    });
     expect(screen.getByText('Complete')).toBeInTheDocument();
     expect(screen.getByText(/Thanks for your purchase./)).toBeInTheDocument();
     expect(screen.getByText(/\(This is a Demo Program.\)/)).toBeInTheDocument();
@@ -87,34 +87,34 @@ describe('unit test', () => {
         code: 'Escape',
         keyCode: 27,
         charCode: 27
-      })
+      });
     });
     expect(screen.getByText('There are no items in your cart.')).toBeInTheDocument();
-  })
+  });
   test('dialog ok click test point less zero', async () => {
     await act(() => testRender());
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0])
+      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0]);
     });
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0])
+      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0]);
     });
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0])
+      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0]);
     });
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0])
+      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0]);
     });
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0])
+      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0]);
     });
     await act(() => {
-      fireEvent.click(screen.getByRole('button', {name: 'Buy'}))
+      fireEvent.click(screen.getByRole('button', {name: 'Buy'}));
     });
     await act(() => {
-      const switchElement = screen.getByLabelText('Use Points')
-      fireEvent.click(switchElement)
-      fireEvent.change(switchElement, { target: { checked: true }})
+      const switchElement = screen.getByLabelText('Use Points');
+      fireEvent.click(switchElement);
+      fireEvent.change(switchElement, {target: {checked: true}});
     });
     expect(screen.getByText('Your Point: $0')).toBeInTheDocument();
     expect(screen.getByText('Total Amount: $25')).toBeInTheDocument();
@@ -124,15 +124,15 @@ describe('unit test', () => {
     fireEvent.change(textAddress, {target: {value: 'Osaka,Japan'}});
 
     await act(() => {
-      fireEvent.click(screen.getByRole('button', {name: 'OK'}))
+      fireEvent.click(screen.getByRole('button', {name: 'OK'}));
     });
     expect(screen.getByText('Complete')).toBeInTheDocument();
     expect(screen.getByText(/Thanks for your purchase./)).toBeInTheDocument();
     expect(screen.getByText(/\(This is a Demo Program.\)/)).toBeInTheDocument();
 
     await act(() => {
-      fireEvent.click(screen.getByRole('button', {name: 'Close'}))
+      fireEvent.click(screen.getByRole('button', {name: 'Close'}));
     });
     expect(screen.getByText('There are no items in your cart.')).toBeInTheDocument();
-  })
-})
+  });
+});

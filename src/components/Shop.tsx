@@ -4,7 +4,7 @@
  * hidekuno@gmail.com
  *
  */
-import React, { useEffect, useState, useContext } from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -12,7 +12,7 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import AddShoppingCart from '@mui/icons-material/AddShoppingCart';
 import Tooltip from '@mui/material/Tooltip';
-import { styled } from '@mui/material/styles';
+import {styled} from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
@@ -20,15 +20,15 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
 import Alert from '@mui/material/Alert';
 import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select, {SelectChangeEvent} from '@mui/material/Select';
 import Snackbar from '@mui/material/Snackbar';
 
-import { addToCart } from '../actions/cartAction';
-import { CartContext } from '../store';
-import { FETCH_TIMEOUT, BAD_REQUEST, JSON_INIT_VAL } from '../constants';
-import { MusicItem } from '../data';
+import {addToCart} from '../actions/cartAction';
+import {CartContext} from '../store';
+import {FETCH_TIMEOUT, BAD_REQUEST, JSON_INIT_VAL} from '../constants';
+import {MusicItem} from '../data';
 
-const StyledTooltip = styled(Tooltip)(({ theme }) => ({
+const StyledTooltip = styled(Tooltip)(({theme}) => ({
   zIndex: theme.zIndex.tooltip + 1,
   '& .MuiTooltip-tooltip': {
     maxWidth: '200px',
@@ -53,14 +53,14 @@ export const Shop: React.FC = () => {
   const dispatch = useContext(CartContext).dispatch;
   const [data, setData] = useState<MusicItem[]>([]);
   const [open, setOpen] = useState<boolean>(false);
-  const [work, setWork] = useState<MusicItem>({ id: 0, title: '', artist: '', imageUrl: '', description: '', price: 0 });
+  const [work, setWork] = useState<MusicItem>({id: 0, title: '', artist: '', imageUrl: '', description: '', price: 0});
   const [error, setError] = useState<string>('');
   const [openAddCart, setOpenAddCart] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(state, { signal: AbortSignal.timeout(FETCH_TIMEOUT) });
+        const response = await fetch(state, {signal: AbortSignal.timeout(FETCH_TIMEOUT)});
 
         if (response.status >= BAD_REQUEST) {
           throw new Error(response.status + ' error');
@@ -80,7 +80,7 @@ export const Shop: React.FC = () => {
   };
 
   return (
-    <Container sx={{ height: '625px', overflowY: 'auto' }}>
+    <Container sx={{height: '625px', overflowY: 'auto'}}>
       {error.length > 0 ? (
         <Alert variant='outlined' severity='error' onClose={() => setError('')}>
           {error}
@@ -89,12 +89,12 @@ export const Shop: React.FC = () => {
         <></>
       )}
       <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle sx={{ paddingBottom: 0 }}>{work.title}</DialogTitle>
-        <DialogContentText sx={{ marginLeft: '2.0rem', fontSize: 14 }}>{work.artist}</DialogContentText>
+        <DialogTitle sx={{paddingBottom: 0}}>{work.title}</DialogTitle>
+        <DialogContentText sx={{marginLeft: '2.0rem', fontSize: 14}}>{work.artist}</DialogContentText>
         <DialogContent>
           <Stack direction='row' spacing={2}>
-            <Box component='img' sx={{ maxWidth: '320px', maxHeight: '320px' }} alt={work.title} src={work.imageUrl} />
-            <DialogContentText sx={{ fontSize: 12 }}>{work.description}</DialogContentText>
+            <Box component='img' sx={{maxWidth: '320px', maxHeight: '320px'}} alt={work.title} src={work.imageUrl} />
+            <DialogContentText sx={{fontSize: 12}}>{work.description}</DialogContentText>
           </Stack>
         </DialogContent>
         <DialogActions>
@@ -106,7 +106,7 @@ export const Shop: React.FC = () => {
 
       <Select
         labelId='demo-simple-select-label'
-        sx={{ height: 25, marginLeft: '50%' }}
+        sx={{height: 25, marginLeft: '50%'}}
         onChange={handleChange}
         value={state}
         data-testid="select-element"
@@ -129,7 +129,7 @@ export const Shop: React.FC = () => {
               <StyledTooltip arrow title={'Please click'} placement='bottom' sx={tooltipTop}>
                 <Box
                   component='img'
-                  sx={{ width: '120px', height: '120px' }}
+                  sx={{width: '120px', height: '120px'}}
                   alt={item.title}
                   src={item.imageUrl}
                   onClick={() => {
@@ -138,13 +138,13 @@ export const Shop: React.FC = () => {
                   }}
                 />
               </StyledTooltip>
-              <Stack direction='row' sx={{ marginTop: '0.2rem', alignItems: 'center', justifyContent: 'center' }}>
+              <Stack direction='row' sx={{marginTop: '0.2rem', alignItems: 'center', justifyContent: 'center'}}>
                 <p className='shop_price'>${item.price}</p>
                 <Button
                   variant='contained'
                   color='primary'
                   size='small'
-                  sx={{ marginLeft: '1.8rem' }}
+                  sx={{marginLeft: '1.8rem'}}
                   startIcon={<AddShoppingCart />}
                   onClick={() => {
                     setOpenAddCart(true);
@@ -162,8 +162,8 @@ export const Shop: React.FC = () => {
         open={openAddCart}
         autoHideDuration={3000}
         onClose={() => setOpenAddCart(false)}
-        sx={{ height: '100%' }}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        sx={{height: '100%'}}
+        anchorOrigin={{vertical: 'top', horizontal: 'center'}}
       >
         <Alert severity='success'>Added to cart.</Alert>
       </Snackbar>

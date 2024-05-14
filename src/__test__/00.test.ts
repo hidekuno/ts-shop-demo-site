@@ -13,7 +13,7 @@ global.fetch = jest.fn().mockImplementation(() => new Response('public/cd-mini.j
 if (!AbortSignal.timeout) {
   AbortSignal.timeout = (ms) => {
     const controller = new AbortController();
-    setTimeout(() => controller.abort(new DOMException("TimeoutError")), ms);
+    setTimeout(() => controller.abort(new DOMException('TimeoutError')), ms);
     return controller.signal;
   };
 }
@@ -22,7 +22,7 @@ describe('unit test', () => {
   let component: any;
 
   test('snapshot test', async () => {
-    await act(() => {component = testRender()});
+    await act(() => {component = testRender();});
     //await waitFor(() => {
     //  component = testRender();
     //});
@@ -32,25 +32,25 @@ describe('unit test', () => {
   test('initial test', async () => {
     // await waitFor(() => testRender());
     await act(() => testRender());
-    expect(screen.getAllByRole('button', { name: 'Cart' })).toHaveLength(10);
+    expect(screen.getAllByRole('button', {name: 'Cart'})).toHaveLength(10);
     expect(screen.getByText('There are no items in your cart.')).toBeInTheDocument();
   });
 
   test('add to cart click 1 test', async () => {
     await act(() => testRender());
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', { name: 'Cart' })[0]);
+      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0]);
     });
     expect(screen.getByText('In your cart')).toBeInTheDocument();
     expect(screen.getByText('Total Amount: $25')).toBeInTheDocument();
 
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', { name: 'Cart' })[1]);
+      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[1]);
     });
     expect(screen.getByText('Total Amount: $48')).toBeInTheDocument();
 
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', { name: 'Cart' })[2]);
+      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[2]);
     });
     expect(screen.getByText('Total Amount: $69')).toBeInTheDocument();
     expect(screen.getAllByText('Revolver')).toHaveLength(1);
@@ -58,23 +58,23 @@ describe('unit test', () => {
   test('delete click test', async () => {
     await act(() => testRender());
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', { name: 'Cart' })[0]);
+      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0]);
     });
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', { name: 'Cart' })[1]);
+      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[1]);
     });
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', { name: 'Cart' })[2]);
+      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[2]);
     });
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', { name: 'Delete' })[2]);
+      fireEvent.click(screen.getAllByRole('button', {name: 'Delete'})[2]);
     });
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', { name: 'Delete' })[1]);
+      fireEvent.click(screen.getAllByRole('button', {name: 'Delete'})[1]);
     });
     expect(screen.getByText('Total Amount: $21')).toBeInTheDocument();
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', { name: 'Delete' })[0]);
+      fireEvent.click(screen.getAllByRole('button', {name: 'Delete'})[0]);
     });
     expect(screen.getByText('There are no items in your cart.')).toBeInTheDocument();
   });
@@ -82,13 +82,13 @@ describe('unit test', () => {
   test('delete click test multi', async () => {
     await act(() => testRender());
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', { name: 'Cart' })[0]);
+      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0]);
     });
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', { name: 'Cart' })[0]);
+      fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[0]);
     });
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', { name: 'Delete' })[0]);
+      fireEvent.click(screen.getAllByRole('button', {name: 'Delete'})[0]);
     });
     expect(screen.getByText('Total Amount: $25')).toBeInTheDocument();
   });
@@ -101,13 +101,13 @@ describe('unit test', () => {
       fireEvent.click(revolver);
     });
     await act(() => {
-      fireEvent.click(screen.getByRole('button', { name: 'Close' }));
+      fireEvent.click(screen.getByRole('button', {name: 'Close'}));
     });
     await act(() => {
       fireEvent.click(revolver);
     });
     await act(() => {
-      fireEvent.keyDown(screen.getByRole('button', { name: 'Close' }), {
+      fireEvent.keyDown(screen.getByRole('button', {name: 'Close'}), {
         key: 'Escape',
         code: 'Escape',
         keyCode: 27,

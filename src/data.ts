@@ -11,4 +11,4 @@ export interface MusicItem {
   imageUrl: string;
   description: string;
   price: number;
-};
+}
