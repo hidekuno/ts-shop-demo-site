@@ -60,7 +60,8 @@ export const shopReducer = (state: ShopState, action: ShopAction): ShopState => 
           ...state.order,
         ]
       };
-    default:
-      throw new Error('No such action type');
+    // It's dead code
+    // default:
+    //  throw new Error('No such action type');
   }
 };

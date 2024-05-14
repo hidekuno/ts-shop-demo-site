@@ -10,13 +10,11 @@ import { cartReducer, CartState, CartAction } from './reducers/cartReducer';
 import { shopReducer, ShopState, ShopAction } from './reducers/shopReducer';
 import { POINT_INIT_VAL } from './constants';
 
-export const ShopContext = createContext<{ state: ShopState; dispatch: React.Dispatch<ShopAction> }>(
-    { state: { username: '', order: [] }, dispatch: () => null }
-);
+type ShopContextType = { state: ShopState; dispatch: React.Dispatch<ShopAction> };
+type CartContextType = { state: CartState; dispatch: React.Dispatch<CartAction> };
 
-export const CartContext = createContext<{ state: CartState; dispatch: React.Dispatch<CartAction> }>(
-    { state: { cart: [], point: POINT_INIT_VAL }, dispatch: () => null }
-);
+export const ShopContext = createContext<ShopContextType>({} as ShopContextType);
+export const CartContext = createContext<CartContextType>({} as CartContextType);
 
 interface StoreContextProviderProps {
   children: ReactNode;

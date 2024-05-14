@@ -102,7 +102,8 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
       const point = state.point - action.payload.point;
       return { ...state, point: Math.max(0, point) };
     }
-    default:
-      throw new Error('No such action type');
+    // It's dead code
+    // default:
+    //  throw new Error('No such action type');
   }
 };
