@@ -23,14 +23,10 @@ describe('unit test', () => {
 
   test('snapshot test', async () => {
     await act(() => {component = testRender();});
-    //await waitFor(() => {
-    //  component = testRender();
-    //});
     expect(component.container).toMatchSnapshot();
   });
 
   test('initial test', async () => {
-    // await waitFor(() => testRender());
     await act(() => testRender());
     expect(screen.getAllByRole('button', {name: 'Cart'})).toHaveLength(10);
     expect(screen.getByText('There are no items in your cart.')).toBeInTheDocument();
