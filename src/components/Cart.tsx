@@ -19,18 +19,19 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
 
 import {CartContext, ShopContext} from '../store';
 import {addOrder} from '../actions/shopAction';
 import {COMPLETE_MESSAGE, NOCART_MESSAGE} from '../constants';
 import {clearToCart, delPoint, addPoint,delToCart} from '../actions/cartAction';
-import {CartAction, CartState, CartItem}  from '../reducers/cartReducer';
+import {CartAction, CartState}  from '../reducers/cartReducer';
+import {CartItem} from '../data';
 
 export const cartClass: CSSProperties = {
   margin: '0.5rem',
   display: 'grid',
   justifyContent: 'center',
-  borderTop: '1px solid #d0d0d0',
   paddingTop: '0.1rem'
 };
 
@@ -157,25 +158,24 @@ export const Cart: React.FC = () => {
     );
   }
 
-  const cart = sale.cartItems.map((item: CartItem) => (
+  const cart = sale.cartItems.map((c: CartItem) => (
     <Container
-      key={item.id}
+      key={c.item.id}
       sx={{display: 'flex', alignItems: 'center', margin: '0.1rem'}}>
-      <img src={item.imageUrl} width='45px' height='45px' alt={item.title} />
+      <img src={c.item.imageUrl} width='45px' height='45px' alt={c.item.title} />
       <Container sx={{width: '600px', marginLeft: '0.2rem'}}>
-        <p className='cart_item'>{item.title}</p>
+        <p className='cart_item'>{c.item.title}</p>
       </Container>
-      <p className='cart_artist'>{item.artist}</p>
-      <p className='cart_price'>${item.price}</p>
-      <p className='cart_qty'>{item.qty}</p>
-      <Button
-        variant='outlined'
+      <p className='cart_artist'>{c.item.artist}</p>
+      <p className='cart_price'>${c.item.price}</p>
+      <p className='cart_qty'>{c.qty}</p>
+      <IconButton
+        aria-label="Delete"
         color='primary'
         size='small'
-        startIcon={<Delete />}
-        onClick={() => { dispatch(delToCart(item)); } }>
-        Delete
-      </Button>
+        onClick={() => { dispatch(delToCart(c)); }}>
+        <Delete />
+      </IconButton>
     </Container>
   ));
   return (

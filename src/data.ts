@@ -12,3 +12,28 @@ export interface MusicItem {
   description: string;
   price: number;
 }
+
+export interface CartItem {
+  item: MusicItem,
+  qty: number;
+  totalPrice: number;
+}
+
+export interface OrderItem {
+  item: MusicItem;
+  qty: number;
+}
+
+export interface Order {
+  orderno: string;
+  orderDatetime: string;
+  payment: number;
+  total: number;
+  detail: OrderItem[];
+}
+
+export interface OrderEntry {
+  total: number;
+  payment: number;
+  detail: CartItem[];
+}

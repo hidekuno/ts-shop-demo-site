@@ -4,7 +4,8 @@
  * hidekuno@gmail.com
  *
  */
-import {ShopAction, Order}  from '../reducers/shopReducer';
+import {ShopAction}  from '../reducers/shopReducer';
+import {OrderEntry}  from '../data';
 import {ADD_ORDER, SIGNIN_USERNAME} from '../constants';
 
 export const signinUsername = (username: string): ShopAction => ({
@@ -12,7 +13,7 @@ export const signinUsername = (username: string): ShopAction => ({
   payload: {username,},
 });
 
-export const addOrder = (order: Order): ShopAction => ({
+export const addOrder = (order: OrderEntry): ShopAction => ({
   type: ADD_ORDER,
   payload: {order},
 });

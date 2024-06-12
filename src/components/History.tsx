@@ -15,25 +15,14 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 import {ShopContext} from '../store';
-
-interface Detail {
-  title: string;
-  price: number;
-  qty: number;
-}
-
-interface Order {
-  orderno: string;
-  orderDatetime: string;
-  payment: number;
-  total: number;
-  detail: Detail[];
-}
+import {Order} from '../data';
 
 const StyledTableCell = styled(TableCell)(({theme}) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
+    paddingTop: 5,
+    paddingBottom: 5,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
@@ -58,15 +47,17 @@ export const History: React.FC = () => {
   const rowspan = (row: Order): number => row.detail.length + 1;
 
   return (
-    <TableContainer component={Paper} sx={{height: '80vh'}}>
+    <TableContainer component={Paper}>
+      <p className='order_title'>Order History</p>
       <Table stickyHeader sx={{minWidth: 750, tableLayout: 'fixed'}} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell style={{width: 180}}>Order No.</StyledTableCell>
+            <StyledTableCell style={{width: 150}}>Order No.</StyledTableCell>
             <StyledTableCell style={{width: 140}}>Order Date Time</StyledTableCell>
-            <StyledTableCell style={{width: 50}}>Payment</StyledTableCell>
-            <StyledTableCell style={{width: 50}}>Total</StyledTableCell>
-            <StyledTableCell>Title</StyledTableCell>
+            <StyledTableCell style={{width: 40}}>Payment</StyledTableCell>
+            <StyledTableCell style={{width: 40}}>Total</StyledTableCell>
+            <StyledTableCell style={{width: 30}}>Title</StyledTableCell>
+            <StyledTableCell></StyledTableCell>
             <StyledTableCell style={{width: 30}} align="right">Price</StyledTableCell>
             <StyledTableCell style={{width: 30}} align="right">Qty</StyledTableCell>
           </TableRow>
@@ -84,8 +75,9 @@ export const History: React.FC = () => {
               </StyledTableRow>
               {row.detail.map((detail, index) => (
                 <StyledTableRow key={index}>
-                  <StyledTableCell>{detail.title}</StyledTableCell>
-                  <StyledTableCell align="right">{dollar(detail.price)}</StyledTableCell>
+                  <StyledTableCell><img src={detail.item.imageUrl} width='30px' height='30px' /></StyledTableCell>
+                  <StyledTableCell>{detail.item.title}</StyledTableCell>
+                  <StyledTableCell align="right">{dollar(detail.item.price)}</StyledTableCell>
                   <StyledTableCell align="right">{detail.qty}</StyledTableCell>
                 </StyledTableRow>
               ))}

@@ -4,8 +4,8 @@
  * hidekuno@gmail.com
  *
  */
-import {MusicItem} from '../data';
-import {CartItem, CartAction}  from '../reducers/cartReducer';
+import {MusicItem, CartItem} from '../data';
+import {CartAction}  from '../reducers/cartReducer';
 import {ADD_ITEM, DEL_ITEM, CLEAR_ITEMS, ADD_POINT, DEL_POINT} from '../constants';
 
 export const addToCart = (item: MusicItem): CartAction => ({

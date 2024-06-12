@@ -4,18 +4,8 @@
  * hidekuno@gmail.com
  *
  */
-import {MusicItem} from '../data';
+import {MusicItem,CartItem} from '../data';
 import {ADD_ITEM, DEL_ITEM, CLEAR_ITEMS, ADD_POINT, DEL_POINT} from '../constants';
-
-export interface CartItem  {
-  id: number;
-  title: string;
-  artist: string;
-  price: number;
-  imageUrl: string;
-  qty: number;
-  totalPrice: number;
-}
 
 export interface CartState {
   cart: CartItem[];
@@ -30,13 +20,13 @@ export type CartAction =
   | {type: 'DEL_POINT'; payload: {point: number}};
 
 const getItem = (cart: CartItem[], id: number): CartItem | undefined =>
-  cart.find((item) => item.id === id);
+  cart.find((c) => c.item.id === id);
 
 const deleteItem = (cart: CartItem[], id: number): CartItem[] =>
-  cart.filter((item) => item.id !== id);
+  cart.filter((c) => c.item.id !== id);
 
 const existsItem = (cart: CartItem[], id: number): boolean =>
-  cart.some((item) => item.id === id);
+  cart.some((c) => c.item.id === id);
 
 export const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
@@ -45,26 +35,21 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
         ...state,
         cart: (() => {
           if (existsItem(state.cart, action.payload.id)) {
-            const item = getItem(state.cart, action.payload.id)!;
+            const c = getItem(state.cart, action.payload.id)!;
             return [
               {
-                ...item,
-                qty: item.qty + 1,
-                totalPrice: item.price * (item.qty + 1),
+                item: c.item,
+                qty: c.qty + 1,
+                totalPrice: c.item.price * (c.qty + 1),
               },
               ...deleteItem(state.cart, action.payload.id),
             ];
           } else {
-            const {id, title, artist, price, imageUrl} = action.payload;
             return [
               {
-                id,
-                title,
-                price,
-                artist,
-                imageUrl,
+                item: action.payload,
                 qty: 1,
-                totalPrice: price,
+                totalPrice: action.payload.price,
               },
               ...state.cart,
             ];
@@ -72,21 +57,21 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
         })(),
       };
     case DEL_ITEM: {
-      const item = getItem(state.cart, action.payload.id)!;
-      const qty = item.qty - 1;
+      const c = getItem(state.cart, action.payload.item.id)!;
+      const qty = c.qty - 1;
       return {
         ...state,
         cart: (() => {
           if (qty === 0) {
-            return deleteItem(state.cart, action.payload.id);
+            return deleteItem(state.cart, action.payload.item.id);
           } else {
             return [
               {
-                ...item,
+                item: c.item,
                 qty: qty,
-                totalPrice: item.price * qty,
+                totalPrice: c.item.price * qty,
               },
-              ...deleteItem(state.cart, action.payload.id),
+              ...deleteItem(state.cart, action.payload.item.id),
             ];
           }
         })(),
