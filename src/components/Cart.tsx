@@ -28,20 +28,19 @@ import {clearToCart, delPoint, addPoint,delToCart} from '../actions/cartAction';
 import {CartAction, CartState}  from '../reducers/cartReducer';
 import {CartItem} from '../data';
 
-export const cartClass: CSSProperties = {
+const cartClass: CSSProperties = {
   margin: '0.5rem',
   display: 'grid',
   justifyContent: 'center',
   paddingTop: '0.1rem'
 };
-
-export const dialogClass: CSSProperties = {
+const dialogClass: CSSProperties = {
   textAlign: 'center',
   fontWeight: 'bold',
   mx: 0.5,
   fontSize: 16,
 };
-export class Sale {
+class Sale {
   cartItems: CartItem[];
 
   userPoint: number;
@@ -73,7 +72,7 @@ export class Sale {
     dispatch(clearToCart());
   }
 }
-export class TextValidation {
+class TextValidation {
   value: string;
 
   setValue: React.Dispatch<React.SetStateAction<string>>;
