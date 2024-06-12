@@ -126,7 +126,7 @@ export const Shop: React.FC = () => {
                 textAlign: 'center'
               }}
             >
-              <StyledTooltip arrow title={'Please click'} placement='bottom' sx={tooltipTop}>
+              <StyledTooltip arrow title={'Click to view description'} placement='bottom' sx={tooltipTop}>
                 <Box
                   component='img'
                   sx={{width: '120px', height: '120px'}}
