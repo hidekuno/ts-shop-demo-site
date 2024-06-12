@@ -26,6 +26,8 @@ const StyledTableCell = styled(TableCell)(({theme}) => ({
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
+    paddingTop: 5,
+    paddingBottom: 5,
   },
 }));
 
