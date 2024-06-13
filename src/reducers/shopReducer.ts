@@ -5,7 +5,7 @@
  *
  */
 import {ADD_ORDER, SIGNIN_USERNAME} from '../constants';
-import {OrderItem, Order, OrderEntry} from '../data';
+import {CartItem, Order, OrderEntry} from '../data';
 
 export interface ShopState {
   username: string;
@@ -20,7 +20,7 @@ const makeOrder = (order: OrderEntry): ShopState['order'][0] => {
   const random = (min: number, max: number, digit: number): string =>
     (Math.floor(Math.random() * (max + min))).toString().padStart(digit, '0');
 
-  const detail: OrderItem[] = [];
+  const detail: CartItem[] = [];
   for (const i in order.detail) {
     detail.push({
       item: order.detail[i].item,

@@ -16,20 +16,14 @@ export interface MusicItem {
 export interface CartItem {
   item: MusicItem,
   qty: number;
-  totalPrice: number;
-}
-
-export interface OrderItem {
-  item: MusicItem;
-  qty: number;
 }
 
 export interface Order {
   orderno: string;
   orderDatetime: string;
-  payment: number;
   total: number;
-  detail: OrderItem[];
+  payment: number;
+  detail: CartItem[];
 }
 
 export interface OrderEntry {

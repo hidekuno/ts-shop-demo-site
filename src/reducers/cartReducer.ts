@@ -40,7 +40,6 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
               {
                 item: c.item,
                 qty: c.qty + 1,
-                totalPrice: c.item.price * (c.qty + 1),
               },
               ...deleteItem(state.cart, action.payload.id),
             ];
@@ -49,7 +48,6 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
               {
                 item: action.payload,
                 qty: 1,
-                totalPrice: action.payload.price,
               },
               ...state.cart,
             ];
@@ -69,7 +67,6 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
               {
                 item: c.item,
                 qty: qty,
-                totalPrice: c.item.price * qty,
               },
               ...deleteItem(state.cart, action.payload.item.id),
             ];
