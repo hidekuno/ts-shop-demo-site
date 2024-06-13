@@ -50,7 +50,7 @@ class Sale {
   constructor(state: CartState) {
     this.cartItems = state.cart;
     this.userPoint = state.point;
-    this.totalPrices = this.cartItems.map((item) => item.totalPrice).reduce((a, b) => a + b, 0);
+    this.totalPrices = this.cartItems.map((c) => c.item.price * c.qty).reduce((a, b) => a + b, 0);
   }
 
   calcTotalPrices(checked: boolean): number {
