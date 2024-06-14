@@ -16,6 +16,31 @@ type CartContextType = {state: CartState; dispatch: React.Dispatch<CartAction>};
 export const ShopContext = createContext<ShopContextType>({} as ShopContextType);
 export const CartContext = createContext<CartContextType>({} as CartContextType);
 
+export interface MusicItem {
+  id: number;
+  title: string;
+  artist: string;
+  imageUrl: string;
+  description: string;
+  price: number;
+}
+export interface CartItem {
+  item: MusicItem,
+  qty: number;
+}
+export interface Order {
+  orderno: string;
+  orderDatetime: string;
+  total: number;
+  payment: number;
+  detail: CartItem[];
+}
+export interface OrderEntry {
+  total: number;
+  payment: number;
+  detail: CartItem[];
+}
+
 interface StoreContextProviderProps {
   children: ReactNode;
 }

@@ -26,7 +26,7 @@ import {addOrder} from '../actions/shopAction';
 import {COMPLETE_MESSAGE, NOCART_MESSAGE} from '../constants';
 import {clearToCart, delPoint, addPoint,delToCart} from '../actions/cartAction';
 import {CartAction, CartState}  from '../reducers/cartReducer';
-import {CartItem} from '../data';
+import {CartItem} from '../store';
 
 const cartClass: CSSProperties = {
   margin: '0.5rem',
