@@ -24,9 +24,8 @@ import Select, {SelectChangeEvent} from '@mui/material/Select';
 import Snackbar from '@mui/material/Snackbar';
 
 import {addToCart} from '../actions/cartAction';
-import {CartContext} from '../store';
+import {CartContext,MusicItem} from '../store';
 import {FETCH_TIMEOUT, BAD_REQUEST, JSON_INIT_VAL} from '../constants';
-import {MusicItem} from '../data';
 
 const StyledTooltip = styled(Tooltip)(({theme}) => ({
   zIndex: theme.zIndex.tooltip + 1,

@@ -4,7 +4,7 @@
  * hidekuno@gmail.com
  *
  */
-import {MusicItem,CartItem} from '../data';
+import {MusicItem,CartItem} from '../store';
 import {ADD_ITEM, DEL_ITEM, CLEAR_ITEMS, ADD_POINT, DEL_POINT} from '../constants';
 
 export interface CartState {

@@ -5,8 +5,8 @@
  *
  */
 import {ShopAction}  from '../reducers/shopReducer';
-import {OrderEntry}  from '../data';
 import {ADD_ORDER, SIGNIN_USERNAME} from '../constants';
+import {OrderEntry} from '../store';
 
 export const signinUsername = (username: string): ShopAction => ({
   type: SIGNIN_USERNAME,
