@@ -10,7 +10,8 @@ import './App.css';
 import {Shop} from './components/Shop';
 import {Cart as CartPart} from './components/Cart';
 import {Header} from './components/Header';
-import {History} from './components/History';
+import {Order as OrderPart} from './components/Order';
+import {Viewed as ViewedPart} from './components/Viewed';
 
 export const Store: React.FC = () => {
   return (
@@ -23,10 +24,21 @@ export const Store: React.FC = () => {
   );
 };
 
-export const Cart: React.FC = () => {
+export const Viewed: React.FC = () => {
   return (
     <div>
       <Header index={1} />
+      <Container sx={{padding: '1rem'}}>
+        <ViewedPart />
+      </Container>
+    </div>
+  );
+};
+
+export const Cart: React.FC = () => {
+  return (
+    <div>
+      <Header index={2} />
       <Container sx={{padding: '1rem'}}>
         <CartPart />
       </Container>
@@ -37,9 +49,9 @@ export const Cart: React.FC = () => {
 export const Order: React.FC = () => {
   return (
     <div>
-      <Header index={2} />
+      <Header index={3} />
       <Container sx={{padding: '1rem'}}>
-        <History />
+        <OrderPart />
       </Container>
     </div>
   );

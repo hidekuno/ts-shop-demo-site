@@ -14,7 +14,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-import {ShopContext,Order} from '../store';
+import {ShopContext,ViewedItem} from '../store';
 
 const StyledTableCell = styled(TableCell)(({theme}) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -39,49 +39,34 @@ const StyledTableRow = styled(TableRow)(({theme}) => ({
   },
 }));
 
-export const History: React.FC = () => {
+export const Viewed: React.FC = () => {
   const state = useContext(ShopContext).state;
-  const order: Order[] = state.order;
-
+  const order: ViewedItem[] = state.views;
   const dollar = (n: number): string => '$' + n;
-
-  const rowspan = (row: Order): number => row.detail.length + 1;
 
   return (
     <TableContainer component={Paper}>
-      <p className='order_title'>Order History</p>
+      <p className='order_title'>Viewed Item History</p>
       <Table stickyHeader sx={{minWidth: 750, tableLayout: 'fixed'}} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell style={{width: 150}}>Order No.</StyledTableCell>
-            <StyledTableCell style={{width: 140}}>Order Date Time</StyledTableCell>
-            <StyledTableCell style={{width: 40}}>Payment</StyledTableCell>
-            <StyledTableCell style={{width: 40}}>Total</StyledTableCell>
+            <StyledTableCell style={{width: 140}}>Viewed Date Time</StyledTableCell>
             <StyledTableCell style={{width: 30}}>Title</StyledTableCell>
-            <StyledTableCell></StyledTableCell>
+            <StyledTableCell style={{width: 500}}></StyledTableCell>
+            <StyledTableCell >Artist</StyledTableCell>
             <StyledTableCell style={{width: 30}} align="right">Price</StyledTableCell>
-            <StyledTableCell style={{width: 30}} align="right">Qty</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {order.map((row, index) => (
             <Fragment key={index}>
               <StyledTableRow>
-                <StyledTableCell component="th" scope="row" rowSpan={rowspan(row)}>
-                  {row.orderno}
-                </StyledTableCell>
-                <StyledTableCell rowSpan={rowspan(row)}>{row.orderDatetime}</StyledTableCell>
-                <StyledTableCell rowSpan={rowspan(row)} align="right">{dollar(row.payment)}</StyledTableCell>
-                <StyledTableCell rowSpan={rowspan(row)} align="right">{dollar(row.total)}</StyledTableCell>
+                <StyledTableCell>{row.datetime}</StyledTableCell>
+                <StyledTableCell><img src={row.item.imageUrl} width='30px' height='30px' /></StyledTableCell>
+                <StyledTableCell>{row.item.title}</StyledTableCell>
+                <StyledTableCell>{row.item.artist}</StyledTableCell>
+                <StyledTableCell align="right">{dollar(row.item.price)}</StyledTableCell>
               </StyledTableRow>
-              {row.detail.map((detail, index) => (
-                <StyledTableRow key={index}>
-                  <StyledTableCell><img src={detail.item.imageUrl} width='30px' height='30px' /></StyledTableCell>
-                  <StyledTableCell>{detail.item.title}</StyledTableCell>
-                  <StyledTableCell align="right">{dollar(detail.item.price)}</StyledTableCell>
-                  <StyledTableCell align="right">{detail.qty}</StyledTableCell>
-                </StyledTableRow>
-              ))}
             </Fragment>
           ))}
         </TableBody>

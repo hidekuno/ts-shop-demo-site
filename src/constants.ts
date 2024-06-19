@@ -21,3 +21,4 @@ export const DEL_POINT = 'DEL_POINT';
 
 export const SIGNIN_USERNAME = 'SIGNIN_USERNAME';
 export const ADD_ORDER = 'ADD_ORDER';
+export const ADD_VIEWED = 'ADD_VIEWED';

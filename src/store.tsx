@@ -28,7 +28,7 @@ export interface CartItem {
   item: MusicItem,
   qty: number;
 }
-export interface Order {
+export interface OrderItem {
   orderno: string;
   orderDatetime: string;
   total: number;
@@ -40,13 +40,17 @@ export interface OrderEntry {
   payment: number;
   detail: CartItem[];
 }
+export interface ViewedItem {
+  datetime: string;
+  item: MusicItem;
+}
 
 interface StoreContextProviderProps {
   children: ReactNode;
 }
 
 export const StoreContextProvider = ({children}: StoreContextProviderProps): JSX.Element => {
-  const [shopState, shopDispatch] = useReducer(shopReducer, {username: '', order: []});
+  const [shopState, shopDispatch] = useReducer(shopReducer, {username: '', order: [], views: []});
   const [cartState, cartDispatch] = useReducer(cartReducer, {cart: [], point: POINT_INIT_VAL});
 
   return (
