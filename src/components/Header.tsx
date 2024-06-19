@@ -24,7 +24,7 @@ interface HeaderProps {
 interface Links {
   path: string;
   label: string;
-  icon: () => React.FC;
+  icon: () => React.ReactElement;
 }
 
 const menuLinks: Links[] = [
