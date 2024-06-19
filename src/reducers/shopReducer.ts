@@ -18,7 +18,7 @@ export type ShopAction =
   | {type: 'ADD_ORDER'; payload: {order: OrderEntry}}
   | {type: 'ADD_VIEWED'; payload: MusicItem};
 
-const getNow = () => {
+const getNow = (): string => {
   const d = new Date();
   return d.toLocaleDateString('sv-SE') + ' ' + d.toLocaleTimeString('sv-SE');
 };
