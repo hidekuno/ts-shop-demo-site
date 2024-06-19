@@ -41,7 +41,7 @@ const StyledTableRow = styled(TableRow)(({theme}) => ({
 
 export const Viewed: React.FC = () => {
   const state = useContext(ShopContext).state;
-  const order: ViewedItem[] = state.views;
+  const views: ViewedItem[] = state.views;
   const dollar = (n: number): string => '$' + n;
 
   return (
@@ -58,7 +58,7 @@ export const Viewed: React.FC = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {order.map((row, index) => (
+          {views.map((row, index) => (
             <Fragment key={index}>
               <StyledTableRow>
                 <StyledTableCell>{row.datetime}</StyledTableCell>
