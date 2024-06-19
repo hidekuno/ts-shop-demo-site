@@ -65,10 +65,6 @@ describe('unit test link', () => {
       fireEvent.click(screen.getByRole('tab', {name: 'Cart', selected: false}));
     });
     expect(screen.getByText(/There are no items in your cart./)).toBeInTheDocument();
-
-    await act(() => {
-      fireEvent.click(screen.getAllByRole('link')[0]);
-    });
   });
   test('order', async () => {
     await act(() => { testLoginRender(); });
@@ -116,5 +112,26 @@ describe('unit test link', () => {
     expect(screen.getByText('Pet Shop Sounds')).toBeInTheDocument();
     expect(screen.getAllByText('$48')).toHaveLength(2);
     expect(screen.getByText('$25')).toBeInTheDocument();
+  });
+  test('viewed', async () => {
+    await act(() => { testLoginRender(); });
+
+    const textUser = screen.getByRole('textbox', {name: 'Username'});
+    fireEvent.change(textUser, {target: {value: 'testtaro'}});
+
+    // It's not work screen.getByRole('textbox', {name: 'Password'});
+    const textPassword =  screen.getByLabelText(/Password/);
+    fireEvent.change(textPassword, {target: {value: 'hogehoge'}});
+
+    await act(() => {
+      fireEvent.click(screen.getAllByRole('button')[0]);
+    });
+    fireEvent.click(screen.getByAltText(/Revolver/));
+    await act(() => {
+      fireEvent.click(screen.getByRole('button', {name: 'Close'}));
+    });
+    await act(() => {
+      fireEvent.click(screen.getByText('Viewed'));
+    });
   });
 });

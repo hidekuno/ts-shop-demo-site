@@ -9,7 +9,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 import './index.css';
 import {Signin} from './components/Signin';
-import {Store, Order, Cart} from './App';
+import {Store, Order, Cart, Viewed} from './App';
 import {StoreContextProvider} from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
@@ -19,8 +19,9 @@ root.render(
       <Routes>
         <Route path={'/'} element={<Signin />} />
         <Route path={'/shop'} element={<Store />} />
-        <Route path={'/order'} element={<Order />} />
+        <Route path={'/viewed'} element={<Viewed />} />
         <Route path={'/cart'} element={<Cart />} />
+        <Route path={'/order'} element={<Order />} />
         <Route path={'*'} element={<Signin />} />
       </Routes>
     </BrowserRouter>

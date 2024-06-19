@@ -24,7 +24,8 @@ import Select, {SelectChangeEvent} from '@mui/material/Select';
 import Snackbar from '@mui/material/Snackbar';
 
 import {addToCart} from '../actions/cartAction';
-import {CartContext,MusicItem} from '../store';
+import {addViewed} from '../actions/shopAction';
+import {CartContext,ShopContext,MusicItem} from '../store';
 import {FETCH_TIMEOUT, BAD_REQUEST, JSON_INIT_VAL} from '../constants';
 
 const StyledTooltip = styled(Tooltip)(({theme}) => ({
@@ -50,6 +51,7 @@ const tooltipTop = {
 export const Shop: React.FC = () => {
   const [state, setState] = useState<string>(JSON_INIT_VAL);
   const dispatch = useContext(CartContext).dispatch;
+  const shopDispatch = useContext(ShopContext).dispatch;
   const [data, setData] = useState<MusicItem[]>([]);
   const [open, setOpen] = useState<boolean>(false);
   const [work, setWork] = useState<MusicItem>({id: 0, title: '', artist: '', imageUrl: '', description: '', price: 0});
@@ -134,6 +136,7 @@ export const Shop: React.FC = () => {
                   onClick={() => {
                     setWork(item);
                     setOpen(true);
+                    shopDispatch(addViewed(item));
                   }}
                 />
               </StyledTooltip>
