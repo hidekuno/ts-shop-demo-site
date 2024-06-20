@@ -18,7 +18,7 @@ import {ShopContext,ViewedItem} from '../store';
 
 const StyledTableCell = styled(TableCell)(({theme}) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: '#898989',
     color: theme.palette.common.white,
     paddingTop: 5,
     paddingBottom: 5,
@@ -45,7 +45,7 @@ export const Viewed: React.FC = () => {
   const dollar = (n: number): string => '$' + n;
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer>
       <p className='order_title'>Viewed Item History</p>
       <Table stickyHeader sx={{minWidth: 750, tableLayout: 'fixed'}} aria-label="customized table">
         <TableHead>

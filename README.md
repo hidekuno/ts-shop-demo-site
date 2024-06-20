@@ -22,3 +22,4 @@ cd ts-shop-demo-site
 npm install
 npm run dev
 ```
+![image](https://github.com/hidekuno/spring-jvn/assets/22115777/24a35a28-8df0-4f8c-91fe-b79ecbe30d27)
