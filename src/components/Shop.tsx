@@ -92,7 +92,7 @@ export const Shop: React.FC = () => {
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle sx={{paddingBottom: 0}}>{work.title}</DialogTitle>
         <DialogContentText sx={{marginLeft: '2.0rem', fontSize: 14}}>{work.artist}</DialogContentText>
-        <DialogContent>
+        <DialogContent style={{background:'#f4f3f1'}}>
           <Stack direction='row' spacing={2}>
             <Box component='img' sx={{maxWidth: '320px', maxHeight: '320px'}} alt={work.title} src={work.imageUrl} />
             <DialogContentText sx={{fontSize: 12}}>{work.description}</DialogContentText>

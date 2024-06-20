@@ -18,7 +18,7 @@ import {ShopContext,OrderItem} from '../store';
 
 const StyledTableCell = styled(TableCell)(({theme}) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: '#898989',
     color: theme.palette.common.white,
     paddingTop: 5,
     paddingBottom: 5,
@@ -48,7 +48,7 @@ export const Order: React.FC = () => {
   const rowspan = (row: OrderItem): number => row.detail.length + 1;
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer>
       <p className='order_title'>Order History</p>
       <Table stickyHeader sx={{minWidth: 750, tableLayout: 'fixed'}} aria-label="customized table">
         <TableHead>
