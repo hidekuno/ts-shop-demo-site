@@ -7,6 +7,7 @@
 import React, {useRef, useState, useContext} from 'react';
 import {CSSProperties} from '@mui/material/styles/createTypography';
 import Delete from '@mui/icons-material/Delete';
+import AddCircle from '@mui/icons-material/AddCircle';
 import Payment from '@mui/icons-material/Payment';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -24,7 +25,7 @@ import IconButton from '@mui/material/IconButton';
 import {CartContext, ShopContext} from '../store';
 import {addOrder} from '../actions/shopAction';
 import {COMPLETE_MESSAGE, NOCART_MESSAGE} from '../constants';
-import {clearToCart, delPoint, addPoint,delToCart} from '../actions/cartAction';
+import {clearToCart, delPoint, addPoint, addToCart, delToCart} from '../actions/cartAction';
 import {CartAction, CartState}  from '../reducers/cartReducer';
 import {CartItem} from '../store';
 
@@ -175,8 +176,16 @@ export const Cart: React.FC = () => {
         onClick={() => { dispatch(delToCart(c)); }}>
         <Delete />
       </IconButton>
+      <IconButton
+        aria-label="Add"
+        color='primary'
+        size='small'
+        onClick={() => { dispatch(addToCart(c.item)); }}>
+        <AddCircle />
+      </IconButton>
     </Container>
   ));
+
   return (
     <Container sx={cartClass}>
       <p className='cart_title'>In your cart</p>
