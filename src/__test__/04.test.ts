@@ -88,7 +88,7 @@ describe('unit test link', () => {
       fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[1]);
     });
     await act(() => {
-      fireEvent.click(screen.getByRole('tab', {name: 'Cart', selected: false}));
+      fireEvent.click(screen.getByRole('tab', {name: /Cart/, selected: false}));
     });
     await act(() => {
       fireEvent.click(screen.getByRole('button', {name: 'Buy'}));

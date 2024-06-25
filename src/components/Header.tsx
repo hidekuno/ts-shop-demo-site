@@ -13,6 +13,8 @@ import ShoppingCart from '@mui/icons-material/ShoppingCart';
 import Shop from '@mui/icons-material/Shop';
 import BrowseGallery from '@mui/icons-material/BrowseGallery';
 import Paid from '@mui/icons-material/Paid';
+import Badge, {BadgeProps} from '@mui/material/Badge';
+import {styled} from '@mui/material/styles';
 
 import '../App.css';
 import {ShopContext, CartContext} from '../store';
@@ -34,6 +36,15 @@ const menuLinks: Links[] = [
   {path:'/order', label: 'Order', icon:() => <Paid />,},
 ];
 
+const StyledBadge = styled(Badge)<BadgeProps>(({theme}) => ({
+  '& .MuiBadge-badge': {
+    right: 73,
+    top: 8,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}));
+
 export const Header: React.FC<HeaderProps> = (props) => {
   const path = useLocation().pathname;
   const state = useContext(ShopContext).state;
@@ -53,15 +64,28 @@ export const Header: React.FC<HeaderProps> = (props) => {
     }
   }, [state.username, navigate]);
 
+
+  const getTabs = (row: Links, index: number) => {
+    if (row.label === 'Cart' && cart.cart.length > 0) {
+      return (
+        <Tab label={<StyledBadge badgeContent={cart.cart.length} color="secondary">Cart</StyledBadge>}
+          icon={row.icon()}
+          component="a" iconPosition="start" sx={{...menubar,}} key={index}/>
+      );
+    } else {
+      return (
+        <Tab label={row.label} icon={row.icon()} component="a" iconPosition="start" sx={{...menubar,}} key={index}/>
+      );
+    }
+  };
+
   return (
     <>
       {menuLinks.map((row) => row.path).slice(0, 4).includes(path) &&
         <header className="header">
           CD Shop <i><b>Demo</b></i> Site
           <Tabs sx={{...menubar, marginLeft: '5%'}} value={value} onChange={handleTabChange} aria-label="menu">
-            {menuLinks.map((row,index) => (
-              <Tab label={row.label} icon={row.icon()} component="a" iconPosition="start" sx={{...menubar,}} key={index}/>
-            ))}
+            {menuLinks.map((row,index) => ( getTabs(row,index) ))}
           </Tabs>
           <p className='shop_username'>{state.username}</p>
           <span style={{fontWeight: 'bold', color: '#e3811e'}}>Your Point: {cart.point}</span>
