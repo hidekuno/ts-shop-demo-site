@@ -33,6 +33,11 @@ a:hover {
     text-align: center;
     font-weight: bold;
 }
+.shop_stock {
+    margin-left: 10px;
+    text-align: center;
+    font-weight: bold;
+}
 .cart_item {
     font-size: 1.0rem;
     margin: 0;

@@ -23,6 +23,7 @@ export interface MusicItem {
   imageUrl: string;
   description: string;
   price: number;
+  stock: number;
 }
 export interface CartItem {
   item: MusicItem,

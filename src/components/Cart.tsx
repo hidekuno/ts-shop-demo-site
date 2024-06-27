@@ -180,6 +180,7 @@ export const Cart: React.FC = () => {
         aria-label="Add"
         color='primary'
         size='small'
+        disabled={c.item.stock <= c.qty}
         onClick={() => { dispatch(addToCart(c.item)); }}>
         <AddCircle />
       </IconButton>
