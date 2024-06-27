@@ -5,7 +5,8 @@
         "artist": "The Beatles",
         "price": 25,
         "description": "This is the seventh studio album by the English rock band the Beatles in August 1966",
-        "imageUrl": "https://m.media-amazon.com/images/I/617oXibcXRL._AC_UL320_.jpg"
+        "imageUrl": "https://m.media-amazon.com/images/I/617oXibcXRL._AC_UL320_.jpg",
+        "stock" : 10
     },
     {
         "id": 2,
@@ -13,7 +14,8 @@
         "artist": "The Beach Boys",
         "price": 23,
         "description": "This is the eleventh studio album by the American rock band the Beach Boys in May 1966",
-        "imageUrl": "https://m.media-amazon.com/images/I/51D4ZYSXJ6L._AC_UL320_.jpg"
+        "imageUrl": "https://m.media-amazon.com/images/I/51D4ZYSXJ6L._AC_UL320_.jpg",
+        "stock" : 1
     },
     {
         "id": 3,
@@ -21,7 +23,8 @@
         "artist": "The Doors",
         "price": 21,
         "description": "This is the second studio album by the American rock band the Doors in September 1967",
-        "imageUrl": "https://m.media-amazon.com/images/I/51M-Dh4hDTL._AC_UL320_.jpg"
+        "imageUrl": "https://m.media-amazon.com/images/I/51M-Dh4hDTL._AC_UL320_.jpg",
+        "stock" : 1
     },
     {
         "id": 4,
@@ -29,7 +32,8 @@
         "artist": "Pink Floyd",
         "price": 20,
         "description": "This is the fifth studio album by the English band Pink Floyd in in October 1970",
-        "imageUrl": "https://m.media-amazon.com/images/I/81bl1CsAm7L._AC_UL320_.jpg"
+        "imageUrl": "https://m.media-amazon.com/images/I/81bl1CsAm7L._AC_UL320_.jpg",
+        "stock" : 1
     },
     {
         "id": 5,
@@ -37,7 +41,8 @@
         "artist": "The Beatles",
         "price": 24,
         "description": "This is the eleventh studio album by the English rock band the Beatles on 26 September 1969",
-        "imageUrl": "https://m.media-amazon.com/images/I/516d1jud2FL._AC_SY320_.jpg"
+        "imageUrl": "https://m.media-amazon.com/images/I/516d1jud2FL._AC_SY320_.jpg",
+        "stock" : 1
     },
     {
         "id": 6,
@@ -45,7 +50,8 @@
         "artist": "King Crimson",
         "price": 21,
         "description": "This is the debut studio album by English rock band King Crimson in October 1969",
-        "imageUrl": "https://m.media-amazon.com/images/I/61FTYY6ZP3L._AC_UL320_.jpg"
+        "imageUrl": "https://m.media-amazon.com/images/I/61FTYY6ZP3L._AC_UL320_.jpg",
+        "stock" : 1
     },
     {
         "id": 7,
@@ -53,7 +59,8 @@
         "artist": "Led Zeppelin",
         "price": 21,
         "description": "This is the 4th studio album by English rock band Led Zeppelin in October 1971",
-        "imageUrl": "https://m.media-amazon.com/images/I/81evsr3Oq0L._AC_SX320_.jpg"
+        "imageUrl": "https://m.media-amazon.com/images/I/81evsr3Oq0L._AC_SX320_.jpg",
+        "stock" : 1
     },
     {
         "id": 8,
@@ -61,7 +68,8 @@
         "artist": "Pink Floyd",
         "price": 23,
         "description": "This is the eighth studio album by the English rock band Pink Floyd, released on 1 March 1973",
-        "imageUrl": "https://m.media-amazon.com/images/I/81aTawcGdmL._AC_SX320_.jpg"
+        "imageUrl": "https://m.media-amazon.com/images/I/81aTawcGdmL._AC_SX320_.jpg",
+        "stock" : 1
 
     },
     {
@@ -70,7 +78,8 @@
         "artist": "The Rolling Stones",
         "price": 25,
         "description": "This is the 10th British and 12th American studio album by the English rock band the Rolling Stones, released on May 1972",
-        "imageUrl": "https://m.media-amazon.com/images/I/61Ij0JBPRdL._AC_SY320_.jpg"
+        "imageUrl": "https://m.media-amazon.com/images/I/61Ij0JBPRdL._AC_SY320_.jpg",
+        "stock" : 1
 
     },
     {
@@ -79,6 +88,7 @@
         "artist": "Led Zeppelin",
         "price": 30,
         "description": "This is the sixth studio album by the English rock band Led Zeppelin as a double album on 24 February 1975",
-        "imageUrl": "https://m.media-amazon.com/images/I/91xy3KDOSCL._AC_SY320_.jpg"
+        "imageUrl": "https://m.media-amazon.com/images/I/91xy3KDOSCL._AC_SY320_.jpg",
+        "stock" : 1
     }
 ]

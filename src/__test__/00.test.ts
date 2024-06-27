@@ -63,12 +63,18 @@ describe('unit test', () => {
       fireEvent.click(screen.getAllByRole('button', {name: 'Cart'})[2]);
     });
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', {name: 'Delete'})[2]);
+      fireEvent.click(screen.getAllByRole('button', {name: 'Delete'})[0]);
     });
     await act(() => {
-      fireEvent.click(screen.getAllByRole('button', {name: 'Delete'})[1]);
+      fireEvent.click(screen.getAllByRole('button', {name: 'Delete'})[0]);
     });
-    expect(screen.getByText('Total Amount: $21')).toBeInTheDocument();
+    expect(screen.getByText('Total Amount: $25')).toBeInTheDocument();
+    await act(() => {
+      fireEvent.click(screen.getAllByRole('button', {name: 'Add'})[0]);
+    });
+    await act(() => {
+      fireEvent.click(screen.getAllByRole('button', {name: 'Delete'})[0]);
+    });
     await act(() => {
       fireEvent.click(screen.getAllByRole('button', {name: 'Delete'})[0]);
     });
