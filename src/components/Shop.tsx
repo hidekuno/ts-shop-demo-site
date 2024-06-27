@@ -49,12 +49,14 @@ const tooltipTop = {
 };
 const makeStock = (jsonData: MusicItem[], order: OrderItem[]) => {
   const m = new Map();
-  for (const rec of order.map((row) => (row.detail.map((item) => [item.item.id,item.qty])))) {
-    const [k,v] = rec[0];
-    if(m.has(k)) {
-      m.set(k, m.get(k) + v);
-    } else {
-      m.set(k, v);
+  for (const item of order.map((row) => (row.detail.map((item) => [item.item.id,item.qty])))) {
+    for (const rec of item) {
+      const [k,v] = rec;
+      if(m.has(k)) {
+        m.set(k, m.get(k) + v);
+      } else {
+        m.set(k, v);
+      }
     }
   }
   return jsonData.map((row:MusicItem) => {
