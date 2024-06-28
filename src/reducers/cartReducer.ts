@@ -36,7 +36,6 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
         cart: (() => {
           if (existsItem(state.cart, action.payload.id)) {
             const c = getItem(state.cart, action.payload.id)!;
-            c.item.stock = c.item.stock - 1;
             return [
               {
                 item: c.item,
