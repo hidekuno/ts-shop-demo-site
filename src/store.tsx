@@ -24,6 +24,7 @@ export interface MusicItem {
   description: string;
   price: number;
   stock: number;
+  digital: boolean;
 }
 export interface CartItem {
   item: MusicItem,
@@ -49,6 +50,7 @@ export interface ViewedItem {
 interface StoreContextProviderProps {
   children: ReactNode;
 }
+export const initMusicItem = () => ({id: 0, title: '', artist: '', imageUrl: '', description: '', price: 0, stock: 0, digital: false});
 
 export const StoreContextProvider = ({children}: StoreContextProviderProps): JSX.Element => {
   const [shopState, shopDispatch] = useReducer(shopReducer, {username: '', order: [], views: []});
