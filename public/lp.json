@@ -6,7 +6,8 @@
         "price": 25,
         "description": "A Hard Day's Night is the third studio album by the English rock band the Beatles, released on 10 July 1964 by Parlophone, with side one containing songs from the soundtrack to their film of the same name. The American version of the album was released two weeks earlier, on 26 June 1964 by United Artists Records, with a different track listing that included selections from George Martin's film score. In contrast to the Beatles' first two albums, all 13 tracks on A Hard Day's Night were written by John Lennon and Paul McCartney, showcasing the development of their songwriting partnership.",
         "imageUrl": "https://m.media-amazon.com/images/I/51BiR6yRF2L._AC_SX320_.jpg",
-        "stock": 3
+        "stock": 3,
+        "digital": false
     },
     {
         "id": 52,
@@ -15,7 +16,8 @@
         "price": 23,
         "description": "Rubber Soul is the sixth studio album by the English rock band the Beatles. It was released on 3 December 1965 in the United Kingdom on EMI's Parlophone label, accompanied by the non-album double A-side single \"Day Tripper\" / \"We Can Work It Out\". The original North American release, issued by Capitol Records, contains ten of the fourteen songs and two tracks withheld from the band's Help! album. Rubber Soul was described as an important artistic achievement by the band, meeting a highly favourable critical response and topping sales charts in Britain and the United States for several weeks.",
         "imageUrl": "https://m.media-amazon.com/images/I/91KkwIzbsKL._AC_SX320_.jpg",
-        "stock": 3
+        "stock": 3,
+        "digital": false
     },
     {
         "id": 53,
@@ -24,7 +26,8 @@
         "price": 21,
         "description": "Highway 61 Revisited is the sixth studio album by American singer-songwriter Bob Dylan, released on August 30, 1965, by Columbia Records. Dylan continued the musical approach of his previous album Bringing It All Back Home (1965), using rock musicians as his backing band on every track of the album in a further departure from his primarily acoustic folk sound, except for the closing track, the 11-minute ballad \"Desolation Row\". Critics have focused on the innovative way Dylan combined driving, blues-based music with the subtlety of poetry to create songs that captured the political and cultural chaos of contemporary America. Author Michael Gray has argued that, in an important sense, the 1960s \"started\" with this album.",
         "imageUrl": "https://m.media-amazon.com/images/I/71kbAAdrzGL._AC_SX320_.jpg",
-        "stock": 3
+        "stock": 3,
+        "digital": false
     },
     {
         "id": 54,
@@ -33,7 +36,8 @@
         "price": 20,
         "description": "Blonde on Blonde is the seventh studio album by American singer-songwriter Bob Dylan, released as a double album on June 20, 1966, by Columbia Records. Recording sessions began in New York in October 1965 with numerous backing musicians, including members of Dylan's live backing band, the Hawks. Though sessions continued until January 1966, they yielded only one track that made it onto the final album—\"One of Us Must Know (Sooner or Later)\". At producer Bob Johnston's suggestion, Dylan, keyboardist Al Kooper, and guitarist Robbie Robertson moved to the CBS studios in Nashville, Tennessee. These sessions, augmented by some of Nashville's top session musicians, were more fruitful, and in February and March all the remaining songs for the album were recorded.",
         "imageUrl": "https://m.media-amazon.com/images/I/813NalkyBjL._AC_SX320_.jpg",
-        "stock": 3
+        "stock": 3,
+        "digital": false
     },
     {
         "id": 55,
@@ -42,7 +46,8 @@
         "price": 24,
         "description": "John Wesley Harding is the eighth studio album by American singer-songwriter Bob Dylan, released on December 27, 1967, by Columbia Records. Produced by Bob Johnston, the album marked Dylan's return to semi-acoustic instrumentation and folk-influenced songwriting after three albums of lyrically abstract, blues-indebted rock music. John Wesley Harding was recorded around the same time as the home recording sessions with The Band known as The Basement Tapes.",
         "imageUrl": "https://m.media-amazon.com/images/I/71jFBSrV4TL._AC_SX320_.jpg",
-        "stock": 3
+        "stock": 3,
+        "digital": false
     },
     {
         "id": 56,
@@ -51,7 +56,8 @@
         "price": 21,
         "description": "Big Hits (High Tide and Green Grass) is the first compilation album by the Rolling Stones. With different cover art and track listings, it was released on 28 March 1966, on London Records in the US and on 4 November 1966, by Decca Records in the UK.",
         "imageUrl": "https://m.media-amazon.com/images/I/71O3uEbFjeL._AC_SX320_.jpg",
-        "stock": 3
+        "stock": 3,
+        "digital": false
     },
     {
         "id": 57,
@@ -60,7 +66,8 @@
         "price": 22,
         "description": "Sgt. Pepper's Lonely Hearts Club Band is the eighth studio album by the English rock band the Beatles. Released on 26 May 1967, Sgt. Pepper is regarded by musicologists as an early concept album that advanced the roles of sound composition, extended form, psychedelic imagery, record sleeves, and the producer in popular music. The album had an immediate cross-generational impact and was associated with numerous touchstones of the era's youth culture, such as fashion, drugs, mysticism, and a sense of optimism and empowerment. Critics lauded the album for its innovations in songwriting, production and graphic design, for bridging a cultural divide between popular music and high art, and for reflecting the interests of contemporary youth and the counterculture.",
         "imageUrl": "https://m.media-amazon.com/images/I/81RYPONu5dL._AC_SX320_.jpg",
-        "stock": 3
+        "stock": 3,
+        "digital": false
     },
     {
         "id": 58,
@@ -69,7 +76,8 @@
         "price": 20,
         "description": "Magical Mystery Tour is a record by the English rock band the Beatles that was released as a double EP in the United Kingdom and an LP in the United States. It includes the soundtrack to the 1967 television film of the same name. The EP was issued in the UK on 8 December 1967 on the Parlophone label, while the Capitol Records LP release in the US and Canada occurred on 27 November and features an additional five songs that were originally released as singles that year. In 1976, Parlophone released the eleven-track LP in the UK.",
         "imageUrl": "https://m.media-amazon.com/images/I/61DmMehFu5L._AC_SX320_.jpg",
-        "stock": 3
+        "stock": 3,
+        "digital": false
     },
     {
         "id": 59,
@@ -78,7 +86,8 @@
         "price": 30,
         "description": "Electric Ladyland is the third and final studio album by the Jimi Hendrix Experience, released in October 1968. A double album, it was the only record from the Experience with production solely credited to Hendrix. The band's most commercially successful release and its only number one album, it was released by Reprise Records in the United States on October 16, 1968, and by Track Records in the UK nine days later. By mid-November, it had reached number 1 on the Billboard Top LPs chart, spending two weeks there. In the UK it peaked at number 6, where it spent 12 weeks on the British charts.",
         "imageUrl": "https://m.media-amazon.com/images/I/51GJiDiwsPL._AC_.jpg",
-        "stock": 3
+        "stock": 3,
+        "digital": false
     },
     {
         "id": 60,
@@ -87,7 +96,8 @@
         "price": 23,
         "description": "The Beatles, also referred to colloquially as the White Album, is the ninth studio album and only double album by the English rock band the Beatles, released on 22 November 1968. Featuring a plain white sleeve, the cover contains no graphics or text other than the band's name embossed. This was intended as a direct contrast to the vivid cover artwork of the band's previous LP Sgt. Pepper's Lonely Hearts Club Band (1967). The Beatles is recognised for its fragmentary style and diverse range of genres, including folk, country rock, British blues, ska, music hall, proto-metal and the avant-garde. It has since been viewed by some critics as a postmodern work, as well as one of the greatest albums of all time.",
         "imageUrl": "https://m.media-amazon.com/images/I/61Wp039+nnL._AC_SX320_.jpg",
-        "stock": 3
+        "stock": 3,
+        "digital": false
     },
     {
         "id": 61,
@@ -96,7 +106,8 @@
         "price": 22,
         "description": "Beggars Banquet is a studio album by the English rock band the Rolling Stones, released on 6 December 1968 by Decca Records in the United Kingdom and London Records in the United States. It was the first Rolling Stones album produced by Jimmy Miller, whose production work formed a key aspect of the group's sound throughout the late 1960s and early 1970s.",
         "imageUrl": "https://m.media-amazon.com/images/I/61BHZ1RWEcL._AC_SX425_.jpg",
-        "stock": 3
+        "stock": 3,
+        "digital": false
     },
     {
         "id": 62,
@@ -105,6 +116,7 @@
         "price": 21,
         "description": "The Rise and Fall of Ziggy Stardust and the Spiders from Mars (often shortened to Ziggy Stardust) is the fifth studio album by the English musician David Bowie, released on 16 June 1972 in the United Kingdom through RCA Records. It was co-produced by Bowie and Ken Scott and features Bowie's backing band the Spiders from Mars — Mick Ronson, Trevor Bolder and Mick Woodmansey. It was recorded from November 1971 to February 1972 at Trident Studios in London.",
         "imageUrl": "https://m.media-amazon.com/images/I/91WJORzpHML._AC_SX320_.jpg",
-        "stock": 3
+        "stock": 3,
+        "digital": false
     }
 ]

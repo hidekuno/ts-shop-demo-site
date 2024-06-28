@@ -25,7 +25,7 @@ import Snackbar from '@mui/material/Snackbar';
 
 import {addToCart} from '../actions/cartAction';
 import {addViewed} from '../actions/shopAction';
-import {CartContext,ShopContext,MusicItem,OrderItem} from '../store';
+import {CartContext, ShopContext, MusicItem, CartItem, OrderItem, initMusicItem} from '../store';
 import {FETCH_TIMEOUT, BAD_REQUEST, JSON_INIT_VAL} from '../constants';
 
 const StyledTooltip = styled(Tooltip)(({theme}) => ({
@@ -47,7 +47,7 @@ const tooltipTop = {
     color: 'black'
   }
 };
-const makeStock = (jsonData: MusicItem[], order: OrderItem[]) => {
+const makeStock = (jsonData: MusicItem[], order: OrderItem[], cart: CartItem[]) => {
   const m = new Map();
   for (const item of order.map((row) => (row.detail.map((item) => [item.item.id,item.qty])))) {
     for (const rec of item) {
@@ -59,6 +59,13 @@ const makeStock = (jsonData: MusicItem[], order: OrderItem[]) => {
       }
     }
   }
+  for (const rec of cart) {
+    if(m.has(rec.item.id)) {
+      m.set(rec.item.id, m.get(rec.item.id) + rec.qty);
+    } else {
+      m.set(rec.item.id, rec.qty);
+    }
+  }
   return jsonData.map((row:MusicItem) => {
     row.stock = m.has(row.id) ? row.stock - m.get(row.id) : row.stock;
     return row;
@@ -66,13 +73,13 @@ const makeStock = (jsonData: MusicItem[], order: OrderItem[]) => {
 };
 export const Shop: React.FC = () => {
   const [state, setState] = useState<string>(JSON_INIT_VAL);
-  const dispatch = useContext(CartContext).dispatch;
+  const cartDispatch = useContext(CartContext).dispatch;
+  const cartState = useContext(CartContext).state;
   const shopDispatch = useContext(ShopContext).dispatch;
   const shopState = useContext(ShopContext).state;
   const [data, setData] = useState<MusicItem[]>([]);
   const [open, setOpen] = useState<boolean>(false);
-  const [work, setWork] =
-    useState<MusicItem>({id: 0, title: '', artist: '', imageUrl: '', description: '', price: 0, stock: 0});
+  const [work, setWork] = useState<MusicItem>(initMusicItem());
   const [error, setError] = useState<string>('');
   const [openAddCart, setOpenAddCart] = useState<boolean>(false);
 
@@ -86,17 +93,16 @@ export const Shop: React.FC = () => {
         }
         const jsonData = await response.json();
 
-        setData(makeStock(jsonData, shopState.order));
+        setData(makeStock(jsonData, shopState.order, cartState.cart));
       } catch (err: any) {
         setError(err.message);
         console.error('fetch error!', err);
       }
     };
     fetchData();
-  }, [state]);
+  }, [state,cartState]);
 
   const handleChange = (event: SelectChangeEvent<string>) => setState(event.target.value as string);
-
   return (
     <Container sx={{height: '625px', overflowY: 'auto'}}>
       {error.length > 0 ? (
@@ -168,12 +174,12 @@ export const Shop: React.FC = () => {
                   disabled={item.stock <= 0}
                   onClick={() => {
                     setOpenAddCart(true);
-                    dispatch(addToCart(item));
+                    cartDispatch(addToCart(item));
                   }}
                 >
                   Cart
                 </Button>
-                <p className='shop_stock'>{(state !== 'mp3.json') && item.stock}</p>
+                <p className='shop_stock'>{(item.digital === false) && item.stock}</p>
               </Stack>
             </Box>
           </Grid>

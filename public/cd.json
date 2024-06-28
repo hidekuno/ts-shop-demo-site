@@ -6,7 +6,8 @@
         "price": 25,
         "description": "Revolver is the seventh studio album by the English rock band the Beatles. It was released on 5 August 1966, accompanied by the double A-side single \"Eleanor Rigby\" / \"Yellow Submarine\". The album was the Beatles' final recording project before their retirement as live performers and marked the group's most overt use of studio technology to date, building on the advances of their late 1965 release Rubber Soul. It has since become regarded as one of the greatest and most innovative albums in the history of popular music, with recognition centred on its range of musical styles, diverse sounds and lyrical content.",
         "imageUrl": "https://m.media-amazon.com/images/I/617oXibcXRL._AC_UL320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 2,
@@ -15,7 +16,8 @@
         "price": 23,
         "description": "Pet Sounds is the eleventh studio album by the American rock band the Beach Boys, released on May 16, 1966 by Capitol Records. It was initially met with a lukewarm critical and commercial response in the United States, peaking at number 10 on the Billboard Top LPs chart. In the United Kingdom, the album was lauded by critics and reached number 2 on the Record Retailer chart, remaining in the top ten for six months. Promoted there as \"the most progressive pop album ever\", Pet Sounds was recognized for its ambitious production, sophisticated music, and emotional lyrics. It is now considered to be among the greatest and most influential albums in music history.",
         "imageUrl": "https://m.media-amazon.com/images/I/51D4ZYSXJ6L._AC_UL320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 3,
@@ -24,7 +26,8 @@
         "price": 21,
         "description": "Strange Days is the second studio album by the American rock band the Doors, released on September 25, 1967 by Elektra Records, arriving eight months after their self-titled debut album. After the latter's successful release, the band started experimenting with both new and old material in early 1967 for their second record. Upon release, Strange Days reached number three on the US Billboard 200, and eventually earned a platinum certification from the Recording Industry Association of America (RIAA). It contains the two Top 30 hit singles, \"People Are Strange\" and \"Love Me Two Times\".",
         "imageUrl": "https://m.media-amazon.com/images/I/51M-Dh4hDTL._AC_UL320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 4,
@@ -33,7 +36,8 @@
         "price": 29,
         "description": "The Velvet Underground & Nico is the debut studio album by the American rock band the Velvet Underground and the German singer Nico, released in March 1967 through Verve Records. It was recorded in 1966 while the band were featured on Andy Warhol's Exploding Plastic Inevitable tour. The album features experimental performance sensibilities and explicit lyrical topics, including drug abuse, prostitution, sadomasochism and sexual deviancy.",
         "imageUrl": "https://m.media-amazon.com/images/I/71YJlc9Wb6L._AC_SX320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 5,
@@ -42,7 +46,8 @@
         "price": 21,
         "description": "In the Court of the Crimson King (subtitled An Observation by King Crimson) is the debut studio album by English progressive rock band King Crimson, released on 10 October 1969 by Island Records. The album is one of the earliest and most influential of the progressive rock genre, where the band combined the musical influences that rock music was founded upon with elements of jazz, classical, and symphonic music.",
         "imageUrl": "https://m.media-amazon.com/images/I/61FTYY6ZP3L._AC_UL320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 6,
@@ -51,7 +56,8 @@
         "price": 24,
         "description": "Abbey Road is the eleventh studio album by the English rock band the Beatles, released on 26 September 1969. It is the last album the group recorded, although Let It Be was the last album completed before the band's break-up in April 1970. It was mostly recorded in April, July, and August 1969, and topped the record charts in both the United States and the United Kingdom. A double A-side single from the album, \"Something\" / \"Come Together\", was released in October, which also topped the charts in the US.",
         "imageUrl": "https://m.media-amazon.com/images/I/516d1jud2FL._AC_SY320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 7,
@@ -60,7 +66,8 @@
         "price": 22,
         "description": "Let It Bleed is a studio album by the English rock band the Rolling Stones, released on 28 November 1969 by London Records in the United States and on 5 December 1969 by Decca Records in the United Kingdom. Released during the band's 1969 American Tour, it is the follow-up to Beggars Banquet (1968), and like that album is a return to the group's more blues-oriented approach that was prominent in the pre-Aftermath (1966) period of their career. Additional sounds on the album draw influence from gospel, country blues and country rock.",
         "imageUrl": "https://m.media-amazon.com/images/I/71kdccs6U7L._AC_SX320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 8,
@@ -69,7 +76,8 @@
         "price": 20,
         "description": "Atom Heart Mother is the fifth studio album by the English rock band Pink Floyd. It was released by Harvest on 2 October 1970 in the UK, and by Capitol on 10 October 1970 in the US. It was recorded at EMI Studios (now Abbey Road Studios) in London, and was the band's first album to reach number 1 in the UK, while it reached number 55 in the US, eventually going gold there.",
         "imageUrl": "https://m.media-amazon.com/images/I/81bl1CsAm7L._AC_UL320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 9,
@@ -78,7 +86,8 @@
         "price": 21,
         "description": "The untitled fourth studio album by the English rock band Led Zeppelin, commonly known as Led Zeppelin IV,[a] was released on 8 November 1971 by Atlantic Records. It was produced by guitarist Jimmy Page and recorded between December 1970 and February 1971, mostly in the country house Headley Grange. The album contains the band's most well-known recording, the eight-minute-long \"Stairway to Heaven\".",
         "imageUrl": "https://m.media-amazon.com/images/I/81evsr3Oq0L._AC_SX320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 10,
@@ -87,7 +96,8 @@
         "price": 23,
         "description": "The Dark Side of the Moon is the eighth studio album by the English rock band Pink Floyd, released on 1 March 1973 by Harvest Records in the UK and Capitol Records in the US. Developed during live performances before recording began, it was conceived as a concept album that would focus on the pressures faced by the band during their arduous lifestyle, and also deal with the mental health problems of the former band member Syd Barrett, who departed the group in 1968. New material was recorded in two sessions in 1972 and 1973 at EMI Studios (now Abbey Road Studios) in London.",
         "imageUrl": "https://m.media-amazon.com/images/I/81aTawcGdmL._AC_SX320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 11,
@@ -96,7 +106,8 @@
         "price": 25,
         "description": "Exile on Main St. is a studio album by the English rock band the Rolling Stones, released on 26 May 1972 by Rolling Stones Records. The 10th released in the UK and 12th in the US, it is viewed as a culmination of a string of the band's most critically successful albums, following Beggars Banquet (1968), Let It Bleed (1969) and Sticky Fingers (1971). Exile on Main St. is known for its murky, inconsistent sound due to more disjointed musicianship and production, along with a party-like atmosphere heard in several tracks.",
         "imageUrl": "https://m.media-amazon.com/images/I/61Ij0JBPRdL._AC_SY320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 12,
@@ -105,7 +116,8 @@
         "price": 30,
         "description": "Physical Graffiti is the sixth studio album by the English rock band Led Zeppelin. Released as a double album on 24 February 1975 in the United States and on 28 February 1975 in the United Kingdom, it was the group's first album to be released under their new label, Swan Song Records. The band wrote and recorded eight new songs for the album in early 1974 at Headley Grange, a country house in Hampshire, which gave them ample time to improvise arrangements and experiment with recording. The total playing time covered just under three sides of an LP, so they decided to expand it into a double album by including previously unreleased tracks from the sessions for the band's earlier albums Led Zeppelin III (1970), Led Zeppelin IV (1971) and Houses of the Holy (1973). The album covered a range of styles including hard rock, progressive rock, rock 'n' roll and folk. The album was then mixed over summer 1974 and planned for an end-of-year release; however, its release was delayed because the Peter Corriston-designed die-cut album cover proved difficult to manufacture.",
         "imageUrl": "https://m.media-amazon.com/images/I/91xy3KDOSCL._AC_SY320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 13,
@@ -114,7 +126,8 @@
         "price": 20,
         "description": "Never Mind the Bollocks, Here's the Sex Pistols is the only studio album by English punk rock band the Sex Pistols, released on 28 October 1977 through Virgin Records in the UK and on 11 November 1977 through Warner Bros. Records in the US. As a result of the Sex Pistols' volatile internal relationships, the band's lineup saw changes during the recording of the album. Original bass guitarist Glen Matlock left the band early in the recording process, and while he is credited as a co-writer on all but two of the tracks, he only played bass and sang backing vocals on one track, \"Anarchy in the U.K.\" Recording sessions continued with a new bass player, Sid Vicious, who is credited on two of the songs written by the band after he joined. While Vicious's bass playing appeared on two tracks, his lack of skill on the instrument meant that many of the tracks were recorded with guitarist Steve Jones playing bass instead. Drummer Paul Cook, Jones and singer Johnny Rotten appear on every track. The various recording sessions were led alternately by Chris Thomas or Bill Price, and sometimes both together, but as the songs on the final albums often combined mixes from different sessions, or were poorly documented who was present in the recording booth at the time, each song is jointly credited to both producers.",
         "imageUrl": "https://m.media-amazon.com/images/I/41o8KsrVk6L._AC_SY320.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 14,
@@ -123,7 +136,8 @@
         "price": 30,
         "description": "London Calling is the third studio album by the English rock band the Clash. It was originally released as a double album in the United Kingdom on 14 December 1979 by CBS Records, and in the United States in January 1980 by Epic Records.",
         "imageUrl": "https://m.media-amazon.com/images/I/71DUFxaoLGL._AC_SY320.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 15,
@@ -132,7 +146,8 @@
         "price": 22,
         "description": "Unknown Pleasures is the debut studio album by the English rock band Joy Division, released on 15 June 1979 by Factory Records. The album was recorded and mixed over three successive weekends at Stockport's Strawberry Studios in April 1979, with producer Martin Hannett contributing a number of unconventional recording techniques to the group's sound. The cover artwork was designed by artist Peter Saville, using a data plot of signals from a radio pulsar. It is the only Joy Division album released during lead singer Ian Curtis's lifetime.",
         "imageUrl": "https://m.media-amazon.com/images/I/81T-loBJ40L._AC_SX320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 16,
@@ -141,7 +156,8 @@
         "price": 23,
         "description": "Low-Life is the third studio album by English rock band New Order, released on 13 May 1985 by Factory Records. It is considered to be among the band's strongest work, displaying the moment they completed their transformation from post-punk hold-overs to dance-rockers. The album shows New Order's increased incorporation of synthesisers and samplers, while still preserving the rock elements of their earlier work. The original Factory CD issues of the album were mastered with pre-emphasis.",
         "imageUrl": "https://m.media-amazon.com/images/I/618+zdVVF4L._AC_SX320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 17,
@@ -150,7 +166,8 @@
         "price": 23,
         "description": "Automatic for the People is the eighth studio album by American alternative rock band R.E.M., released by Warner Bros. Records on October 5, 1992, in the United Kingdom and Europe, and on the following day in the United States. R.E.M. began production on the album while their previous album, Out of Time (1991), was still ascending top albums charts and achieving global success. Aided by string arrangements from John Paul Jones and conducted by George Hanson, Automatic for the People features ruminations on mortality, loss, mourning, and nostalgia.",
         "imageUrl": "https://m.media-amazon.com/images/I/71fKxMccbgL._AC_SX320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 18,
@@ -159,7 +176,8 @@
         "price": 23,
         "description": "OK Computer is the third studio album by the English rock band Radiohead, released on 21 May 1997. With their producer, Nigel Godrich, Radiohead recorded most of OK Computer in their rehearsal space in Oxfordshire and the historic mansion of St Catherine's Court in Bath in 1996 and early 1997. They distanced themselves from the guitar-centred, lyrically introspective style of their previous album, The Bends. OK Computer's abstract lyrics, densely layered sound and eclectic influences laid the groundwork for Radiohead's later, more experimental work.",
         "imageUrl": "https://m.media-amazon.com/images/I/71qtTEW46SL._AC_SX320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 19,
@@ -168,7 +186,8 @@
         "price": 23,
         "description": "Kid A is the fourth studio album by the English rock band Radiohead, released on 2 October 2000 by Parlophone. It was recorded with their producer, Nigel Godrich, in Paris, Copenhagen, Gloucestershire and Oxfordshire.",
         "imageUrl": "https://m.media-amazon.com/images/I/71VsE62mIBL._AC_SX320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 20,
@@ -177,7 +196,8 @@
         "price": 23,
         "description": "Amnesiac is the fifth studio album by the English rock band Radiohead, released on 30 May 2001 by EMI. It was recorded with the producer Nigel Godrich in the same sessions as Radiohead's previous album Kid A (2000). Radiohead split the work in two as they felt it was too dense for a double album. As with Kid A, Amnesiac incorporates influences from electronic music, 20th-century classical music, jazz and krautrock. The final track, \"Life in a Glasshouse\", is a collaboration with the jazz trumpeter Humphrey Lyttelton and his band.",
         "imageUrl": "https://m.media-amazon.com/images/I/51QWuyGnj0L._AC_SX320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 21,
@@ -186,7 +206,8 @@
         "price": 23,
         "description": "Hail to the Thief is the sixth studio album by the English rock band Radiohead. It was released on 9 June 2003 through Parlophone internationally and a day later through Capitol Records in the United States. It was the last album released under Radiohead's record contract with EMI, the parent company of Parlophone and Capitol.",
         "imageUrl": "https://m.media-amazon.com/images/I/61vc2i2uncL._AC_SX320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 22,
@@ -195,7 +216,8 @@
         "price": 23,
         "description": "In Rainbows is the seventh studio album by the English rock band Radiohead. It was self-released on 10 October 2007 as a pay-what-you-want download, followed by a physical release internationally through XL Recordings on 3 December 2007 and in North America through TBD Records on 1 January 2008. It was Radiohead's first release after their recording contract with EMI ended with their album Hail to the Thief (2003).",
         "imageUrl": "https://m.media-amazon.com/images/I/A1MwaIeBpwL._AC_SX320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 23,
@@ -204,7 +226,8 @@
         "price": 23,
         "description": "The King of Limbs is the eighth studio album by the English rock band Radiohead. It was self-released on 18 February 2011 as a download, followed by a physical release on 28 March through XL Recordings internationally and TBD Records in North America.",
         "imageUrl": "https://m.media-amazon.com/images/I/71QutlpFZYL._AC_SX320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     },
     {
         "id": 24,
@@ -213,6 +236,7 @@
         "price": 23,
         "description": "A Moon Shaped Pool is the ninth studio album by the English rock band Radiohead. It was released digitally on 8 May 2016, with a retail release on 17 June 2016 through XL Recordings. It was produced by Radiohead's longtime collaborator Nigel Godrich.",
         "imageUrl": "https://m.media-amazon.com/images/I/61nLj6QgRqL._AC_SX320_.jpg",
-        "stock": 20
+        "stock": 20,
+        "digital": false
     }
 ]
