@@ -187,7 +187,7 @@ export const Shop: React.FC = () => {
       </Grid>
       <Snackbar
         open={openAddCart}
-        autoHideDuration={3000}
+        autoHideDuration={1000}
         onClose={() => setOpenAddCart(false)}
         sx={{height: '100%'}}
         anchorOrigin={{vertical: 'top', horizontal: 'center'}}
