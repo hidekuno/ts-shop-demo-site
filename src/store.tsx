@@ -50,7 +50,44 @@ export interface ViewedItem {
 interface StoreContextProviderProps {
   children: ReactNode;
 }
-export const initMusicItem = () => ({id: 0, title: '', artist: '', imageUrl: '', description: '', price: 0, stock: 0, digital: false});
+
+export const makeStock = (jsonData: MusicItem[], order: OrderItem[], cart: CartItem[]) => {
+  const m = new Map();
+  for (const item of order.map((row) => (row.detail.map((item) => [item.item.id,item.qty])))) {
+    for (const rec of item) {
+      const [k,v] = rec;
+      if(m.has(k)) {
+        m.set(k, m.get(k) + v);
+      } else {
+        m.set(k, v);
+      }
+    }
+  }
+  for (const rec of cart) {
+    if(m.has(rec.item.id)) {
+      m.set(rec.item.id, m.get(rec.item.id) + rec.qty);
+    } else {
+      m.set(rec.item.id, rec.qty);
+    }
+  }
+  return jsonData.map((row:MusicItem) => {
+    row.stock = m.has(row.id) ? row.stock - m.get(row.id) : row.stock;
+    return row;
+  });
+};
+
+export const calcCartQty = (cart: CartItem[]) => cart.reduce((sum, current) => sum + current.qty,0);
+
+export const initMusicItem = () => ({
+  id: 0,
+  title: '',
+  artist: '',
+  imageUrl: '',
+  description: '',
+  price: 0,
+  stock: 0,
+  digital:
+  false});
 
 export const StoreContextProvider = ({children}: StoreContextProviderProps): JSX.Element => {
   const [shopState, shopDispatch] = useReducer(shopReducer, {username: '', order: [], views: []});
