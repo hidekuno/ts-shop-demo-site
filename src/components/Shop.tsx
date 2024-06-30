@@ -25,7 +25,7 @@ import Snackbar from '@mui/material/Snackbar';
 
 import {addToCart} from '../actions/cartAction';
 import {addViewed} from '../actions/shopAction';
-import {CartContext, ShopContext, MusicItem, CartItem, OrderItem, initMusicItem} from '../store';
+import {CartContext, ShopContext, MusicItem, makeStock, initMusicItem} from '../store';
 import {FETCH_TIMEOUT, BAD_REQUEST, JSON_INIT_VAL} from '../constants';
 
 const StyledTooltip = styled(Tooltip)(({theme}) => ({
@@ -46,30 +46,6 @@ const tooltipTop = {
     border: 'solid skyblue 1px',
     color: 'black'
   }
-};
-const makeStock = (jsonData: MusicItem[], order: OrderItem[], cart: CartItem[]) => {
-  const m = new Map();
-  for (const item of order.map((row) => (row.detail.map((item) => [item.item.id,item.qty])))) {
-    for (const rec of item) {
-      const [k,v] = rec;
-      if(m.has(k)) {
-        m.set(k, m.get(k) + v);
-      } else {
-        m.set(k, v);
-      }
-    }
-  }
-  for (const rec of cart) {
-    if(m.has(rec.item.id)) {
-      m.set(rec.item.id, m.get(rec.item.id) + rec.qty);
-    } else {
-      m.set(rec.item.id, rec.qty);
-    }
-  }
-  return jsonData.map((row:MusicItem) => {
-    row.stock = m.has(row.id) ? row.stock - m.get(row.id) : row.stock;
-    return row;
-  });
 };
 export const Shop: React.FC = () => {
   const [state, setState] = useState<string>(JSON_INIT_VAL);

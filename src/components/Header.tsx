@@ -17,7 +17,7 @@ import Badge, {BadgeProps} from '@mui/material/Badge';
 import {styled} from '@mui/material/styles';
 
 import '../App.css';
-import {ShopContext, CartContext} from '../store';
+import {ShopContext, CartContext, calcCartQty} from '../store';
 
 interface HeaderProps {
   index: number;
@@ -68,7 +68,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
   const getTabs = (row: Links, index: number) => {
     if (row.label === 'Cart' && cart.cart.length > 0) {
       return (
-        <Tab label={<StyledBadge badgeContent={cart.cart.length} color="secondary">Cart</StyledBadge>}
+        <Tab label={<StyledBadge badgeContent={calcCartQty(cart.cart)} color="secondary">Cart</StyledBadge>}
           icon={row.icon()} component="a" iconPosition="start" sx={{...menubar,}} key={index}/>
       );
     } else {
