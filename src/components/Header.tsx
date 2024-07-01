@@ -80,7 +80,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
 
   return (
     <>
-      {menuLinks.map((row) => row.path).slice(0, 4).includes(path) &&
+      {menuLinks.map((row) => row.path).includes(path) &&
         <header className="header">
           CD Shop <i><b>Demo</b></i> Site
           <Tabs sx={{...menubar, marginLeft: '5%'}} value={value} onChange={handleTabChange} aria-label="menu">
