@@ -4,7 +4,7 @@
  * hidekuno@gmail.com
  *
  */
-import React, {Fragment, useContext} from 'react';
+import React, {Fragment, useContext, useState} from 'react';
 import {styled} from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -12,8 +12,11 @@ import TableCell, {tableCellClasses} from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 import {ShopContext,OrderItem} from '../store';
+import {PAGE_COUNT} from '../constants';
 
 const StyledTableCell = styled(TableCell)(({theme}) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -38,17 +41,41 @@ const StyledTableRow = styled(TableRow)(({theme}) => ({
   },
 }));
 
+const pageInfo = (order: OrderItem[]) => {
+  let s = 0;
+  const r = [0];
+
+  for (let i = 0; i < order.length; i++) {
+    s += order[i].detail.length;
+    if (s >= PAGE_COUNT && (i + 1) !== order.length) {
+      r.push(i + 1);
+      s = 0;
+    }
+  }
+  return r;
+};
+
 export const Order: React.FC = () => {
   const state = useContext(ShopContext).state;
   const order: OrderItem[] = state.order;
-
   const dollar = (n: number): string => '$' + n;
-
   const rowspan = (row: OrderItem): number => row.detail.length + 1;
+
+  const [page, setPage] = useState(1);
+  const pages = pageInfo(order);
+  const pageCount = pages.length;
+  const getViewData = () => order.slice(pages[page - 1], pages[page]);
+  const handleChange = (_event: React.ChangeEvent<unknown>, page: number) => setPage(page);
 
   return (
     <TableContainer>
       <p className='order_title'>Order History</p>
+      {
+        pageCount > 1 &&
+        <Stack spacing={2} sx={{alignItems: 'center', justifyContent: 'center'}}>
+          <Pagination count={pageCount} page={page} color="primary" size="small" onChange={handleChange} />
+        </Stack>
+      }
       <Table stickyHeader sx={{minWidth: 750, tableLayout: 'fixed'}} aria-label="customized table">
         <TableHead>
           <TableRow>
@@ -63,7 +90,7 @@ export const Order: React.FC = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {order.map((row, index) => (
+          {getViewData().map((row, index) => (
             <Fragment key={index}>
               <StyledTableRow>
                 <StyledTableCell component="th" scope="row" rowSpan={rowspan(row)}>
