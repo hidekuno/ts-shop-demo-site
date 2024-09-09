@@ -25,3 +25,19 @@ npm run dev
 ### Screenshot
 
 ![image](https://github.com/hidekuno/jvn/assets/22115777/cb6b71fd-2cdb-497b-95f2-1e34d7994d7e)
+
+## Lint
+```
+npm run lint
+```
+
+## Test
+```
+npm test
+```
+
+## Deploy to AWS
+```
+npm run build
+aws s3 sync dist s3://${BUCKET_NAME}
+```
