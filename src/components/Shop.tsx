@@ -60,6 +60,7 @@ export const Shop: React.FC = () => {
   const [openAddCart, setOpenAddCart] = useState<boolean>(false);
 
   useEffect(() => {
+    // console.log("useEffect");
     const fetchData = async () => {
       try {
         const response = await fetch(state, {signal: AbortSignal.timeout(FETCH_TIMEOUT)});
@@ -76,7 +77,8 @@ export const Shop: React.FC = () => {
       }
     };
     fetchData();
-  }, [state,cartState]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state]);
 
   const handleChange = (event: SelectChangeEvent<string>) => setState(event.target.value as string);
   return (
