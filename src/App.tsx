@@ -13,46 +13,23 @@ import {Header} from './components/Header';
 import {Order as OrderPart} from './components/Order';
 import {Viewed as ViewedPart} from './components/Viewed';
 
-export const Store: React.FC = () => {
+interface PageProps {
+  index: number;
+  Component: React.FC;
+}
+
+const Page: React.FC<PageProps> = ({index, Component}) => {
   return (
     <div>
-      <Header index={0} />
+      <Header index={index} />
       <Container sx={{padding: '1rem'}}>
-        <Shop />
+        <Component />
       </Container>
     </div>
   );
 };
 
-export const Viewed: React.FC = () => {
-  return (
-    <div>
-      <Header index={1} />
-      <Container sx={{padding: '1rem'}}>
-        <ViewedPart />
-      </Container>
-    </div>
-  );
-};
-
-export const Cart: React.FC = () => {
-  return (
-    <div>
-      <Header index={2} />
-      <Container sx={{padding: '1rem'}}>
-        <CartPart />
-      </Container>
-    </div>
-  );
-};
-
-export const Order: React.FC = () => {
-  return (
-    <div>
-      <Header index={3} />
-      <Container sx={{padding: '1rem'}}>
-        <OrderPart />
-      </Container>
-    </div>
-  );
-};
+export const Store: React.FC = () => <Page index={0} Component={Shop} />;
+export const Viewed: React.FC = () => <Page index={1} Component={ViewedPart} />;
+export const Cart: React.FC = () => <Page index={2} Component={CartPart} />;
+export const Order: React.FC = () => <Page index={3} Component={OrderPart} />;

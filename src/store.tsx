@@ -52,27 +52,24 @@ interface StoreContextProviderProps {
 }
 
 export const makeStock = (jsonData: MusicItem[], order: OrderItem[], cart: CartItem[]) => {
-  const m = new Map();
-  for (const item of order.map((row) => (row.detail.map((item) => [item.item.id,item.qty])))) {
-    for (const rec of item) {
-      const [k,v] = rec;
-      if(m.has(k)) {
-        m.set(k, m.get(k) + v);
-      } else {
-        m.set(k, v);
-      }
+  const stockMap = new Map<number, number>();
+
+  const updateStockMap = (id: number, qty: number) => {
+    stockMap.set(id, (stockMap.get(id) || 0) + qty);
+  };
+
+  for (const orderItem of order) {
+    for (const detailItem of orderItem.detail) {
+      updateStockMap(detailItem.item.id, detailItem.qty);
     }
   }
-  for (const rec of cart) {
-    if(m.has(rec.item.id)) {
-      m.set(rec.item.id, m.get(rec.item.id) + rec.qty);
-    } else {
-      m.set(rec.item.id, rec.qty);
-    }
+  for (const cartItem of cart) {
+    updateStockMap(cartItem.item.id, cartItem.qty);
   }
-  return jsonData.map((row:MusicItem) => {
-    row.stock = m.has(row.id) ? row.stock - m.get(row.id) : row.stock;
-    return row;
+
+  return jsonData.map((musicItem: MusicItem) => {
+    const deductedStock = stockMap.get(musicItem.id) || 0;
+    return {...musicItem, stock: musicItem.stock - deductedStock};
   });
 };
 

@@ -71,9 +71,13 @@ export const Shop: React.FC = () => {
         const jsonData = await response.json();
 
         setData(makeStock(jsonData, shopState.order, cartState.cart));
-      } catch (err: any) {
-        setError(err.message);
-        console.error('fetch error!', err);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+          console.error('fetch error!', err);
+        } else {
+          console.error('Unexpected error', err);
+        }
       }
     };
     fetchData();
