@@ -25,43 +25,32 @@ const getItem = (cart: CartItem[], id: number): CartItem | undefined =>
 const deleteItem = (cart: CartItem[], id: number): CartItem[] =>
   cart.filter((c) => c.item.id !== id);
 
-const existsItem = (cart: CartItem[], id: number): boolean =>
-  cart.some((c) => c.item.id === id);
-
 export const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
-    case ADD_ITEM:
-      return {
-        ...state,
-        cart: (() => {
-          if (existsItem(state.cart, action.payload.id)) {
-            const c = getItem(state.cart, action.payload.id)!;
-            c.qty += 1;
-            return [...state.cart,];
-          } else {
-            return [
-              {
-                item: action.payload,
-                qty: 1,
-              },
-              ...state.cart,
-            ];
-          }
-        })(),
-      };
+    case ADD_ITEM: {
+      const updatedCart = [...state.cart];
+      const existingItem = getItem(updatedCart, action.payload.id);
+
+      if (existingItem) {
+        existingItem.qty += 1;
+      } else {
+        updatedCart.unshift({item: action.payload, qty: 1});
+      }
+
+      return {...state, cart: updatedCart};
+    }
     case DEL_ITEM: {
-      const c = getItem(state.cart, action.payload.item.id)!;
-      c.qty -= 1;
-      return {
-        ...state,
-        cart: (() => {
-          if (c.qty === 0) {
-            return deleteItem(state.cart, action.payload.item.id);
-          } else {
-            return [...state.cart,];
-          }
-        })(),
-      };
+      const updatedCart = [...state.cart];
+      const existingItem = getItem(updatedCart, action.payload.item.id);
+
+      if (existingItem) {
+        existingItem.qty -= 1;
+        if (existingItem.qty === 0) {
+          return {...state, cart: deleteItem(updatedCart, action.payload.item.id)};
+        }
+      }
+
+      return {...state, cart: updatedCart};
     }
     case CLEAR_ITEMS:
       return {...state, cart: []};
@@ -73,8 +62,7 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
       const point = state.point - action.payload.point;
       return {...state, point: Math.max(0, point)};
     }
-    // It's dead code
-    // default:
-    //  throw new Error('No such action type');
+    default:
+      return state;
   }
 };
