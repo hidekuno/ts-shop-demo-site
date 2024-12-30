@@ -17,6 +17,7 @@ export default [
       "linebreak-style": ["error","unix"],
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
+      "react-hooks/exhaustive-deps": "off",
       "@typescript-eslint/quotes": ["error", "single"],
       "@typescript-eslint/indent": ["error",2],
       "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": '^_' }],

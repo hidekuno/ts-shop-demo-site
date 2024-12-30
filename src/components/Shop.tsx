@@ -77,7 +77,6 @@ export const Shop: React.FC = () => {
       }
     };
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
   const handleChange = (event: SelectChangeEvent<string>) => setState(event.target.value as string);
