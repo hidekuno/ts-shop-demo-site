@@ -4,7 +4,7 @@
  * hidekuno@gmail.com
  *
  */
-import React, {createContext, useReducer, ReactNode} from 'react';
+import {createContext, useReducer, ReactNode, JSX} from 'react';
 
 import {cartReducer, CartState, CartAction} from './reducers/cartReducer';
 import {shopReducer, ShopState, ShopAction} from './reducers/shopReducer';

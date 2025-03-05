@@ -11,6 +11,8 @@ export default [
   pluginReactConfig,
   {
     rules: {
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_', 'varsIgnorePattern': '^_', }],
       "arrow-body-style": "off",
       "import/no-unresolved": "off",
       "import/prefer-default-export": "off",
@@ -18,16 +20,14 @@ export default [
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
       "react-hooks/exhaustive-deps": "off",
-      "@typescript-eslint/quotes": ["error", "single"],
-      "@typescript-eslint/indent": ["error",2],
-      "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": '^_' }],
-      "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/object-curly-spacing": "error",
-      "@typescript-eslint/semi": "error",
-      "@typescript-eslint/comma-dangle": "off",
-      "@typescript-eslint/space-infix-ops": "error",
-      "@typescript-eslint/lines-between-class-members": "error",
-      "@typescript-eslint/no-extra-semi": "error",
+      "@/quotes": ["error", "single"],
+      "@/indent": ["error",2,{"SwitchCase": 1}],
+      "@/object-curly-spacing": "error",
+      "@/semi": "error",
+      "@/comma-dangle": "off",
+      "@/space-infix-ops": "error",
+      "@/lines-between-class-members": "error",
+      "@/no-extra-semi": "error",
     },
     settings: { react: { version: 'detect' } }
   }
