@@ -4,3 +4,4 @@ __snapshots__
 coverage
 dist
 .vscode
+stats.html

@@ -48,7 +48,9 @@ describe('unit test etc', () => {
   test('fetch error test', async () => {
     await waitFor(() => testRender());
     expect(console.error).toBeCalled();
-    const button = screen.getByTestId('CloseIcon');
-    fireEvent.click(button);
+    await waitFor(() => {
+      const button = screen.getByTestId('CloseIcon');
+      fireEvent.click(button);
+    });
   });
 });

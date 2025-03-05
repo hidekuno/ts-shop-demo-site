@@ -82,11 +82,11 @@ class TextValidation {
 
   setError: React.Dispatch<React.SetStateAction<boolean>>;
 
-  ref: React.RefObject<HTMLInputElement>;
+  ref: React.RefObject<HTMLInputElement|null>;
 
   constructor(value: [string,React.Dispatch<React.SetStateAction<string>>],
     error: [boolean, React.Dispatch<React.SetStateAction<boolean>>],
-    ref: React.RefObject<HTMLInputElement>) {
+    ref: React.RefObject<HTMLInputElement|null>) {
     this.value = value[0];
     this.setValue = value[1];
     this.error = error[0];
@@ -118,8 +118,8 @@ export const Cart: React.FC = () => {
   const [message, setMessage] = useState('');
 
   const sale = new Sale(state);
-  const mailAddr = new TextValidation(useState(''), useState(false), useRef<HTMLInputElement>(null));
-  const recipientAddr = new TextValidation(useState(''), useState(false),useRef<HTMLInputElement>(null));
+  const mailAddr = new TextValidation(useState(''), useState(false), useRef<HTMLInputElement|null>(null));
+  const recipientAddr = new TextValidation(useState(''), useState(false),useRef<HTMLInputElement|null>(null));
 
   const initUi = (): void => {
     setChecked(false);
