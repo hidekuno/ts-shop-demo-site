@@ -156,6 +156,7 @@ export const Shop: React.FC = () => {
                   onClick={() => {
                     setOpenAddCart(true);
                     cartDispatch(addToCart(item));
+                    item.stock--;
                   }}
                 >
                   Cart
