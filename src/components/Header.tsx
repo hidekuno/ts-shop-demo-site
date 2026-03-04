@@ -88,7 +88,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
           </Tabs>
           <p className='shop_username'>{state.username}</p>
           <span style={{fontWeight: 'bold', color: '#e3811e'}}>Your Point: {cart.point}</span>
-          <Link underline='hover' href='' onClick={() => navigate('/')}>Sign out</Link>
+          <Link underline='hover' component="button" onClick={() => navigate('/')}>Sign out</Link>
         </header>
       }
     </>

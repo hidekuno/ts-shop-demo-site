@@ -4,7 +4,7 @@
  * hidekuno@gmail.com
  *
  */
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useEffect, useState, useContext, useMemo} from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -53,7 +53,8 @@ export const Shop: React.FC = () => {
   const cartState = useContext(CartContext).state;
   const shopDispatch = useContext(ShopContext).dispatch;
   const shopState = useContext(ShopContext).state;
-  const [data, setData] = useState<MusicItem[]>([]);
+  const [rawData, setRawData] = useState<MusicItem[]>([]);
+  const data = useMemo(() => makeStock(rawData, shopState.order, cartState.cart), [rawData, shopState.order, cartState.cart]);
   const [open, setOpen] = useState<boolean>(false);
   const [work, setWork] = useState<MusicItem>(initMusicItem());
   const [error, setError] = useState<string>('');
@@ -70,7 +71,7 @@ export const Shop: React.FC = () => {
         }
         const jsonData = await response.json();
 
-        setData(makeStock(jsonData, shopState.order, cartState.cart));
+        setRawData(jsonData);
       } catch (err: unknown) {
         if (err instanceof Error) {
           setError(err.message);
@@ -156,7 +157,6 @@ export const Shop: React.FC = () => {
                   onClick={() => {
                     setOpenAddCart(true);
                     cartDispatch(addToCart(item));
-                    item.stock--;
                   }}
                 >
                   Cart

@@ -90,8 +90,8 @@ export const Order: React.FC = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {getViewData().map((row, index) => (
-            <Fragment key={index}>
+          {getViewData().map((row) => (
+            <Fragment key={row.orderno}>
               <StyledTableRow>
                 <StyledTableCell component="th" scope="row" rowSpan={rowspan(row)}>
                   {row.orderno}
@@ -100,8 +100,8 @@ export const Order: React.FC = () => {
                 <StyledTableCell rowSpan={rowspan(row)} align="right">{dollar(row.payment)}</StyledTableCell>
                 <StyledTableCell rowSpan={rowspan(row)} align="right">{dollar(row.total)}</StyledTableCell>
               </StyledTableRow>
-              {row.detail.map((detail, index) => (
-                <StyledTableRow key={index}>
+              {row.detail.map((detail) => (
+                <StyledTableRow key={detail.item.id}>
                   <StyledTableCell><img src={detail.item.imageUrl} width='30px' height='30px' /></StyledTableCell>
                   <StyledTableCell>{detail.item.title}</StyledTableCell>
                   <StyledTableCell align="right">{dollar(detail.item.price)}</StyledTableCell>

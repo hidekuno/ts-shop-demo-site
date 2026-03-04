@@ -73,8 +73,8 @@ export const Viewed: React.FC = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {getViewData(views,page).map((row, index) => (
-            <Fragment key={index}>
+          {getViewData(views,page).map((row) => (
+            <Fragment key={`${row.datetime}-${row.item.id}`}>
               <StyledTableRow>
                 <StyledTableCell>{row.datetime}</StyledTableCell>
                 <StyledTableCell><img src={row.item.imageUrl} width='30px' height='30px' /></StyledTableCell>

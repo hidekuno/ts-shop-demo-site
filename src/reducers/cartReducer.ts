@@ -28,29 +28,34 @@ const deleteItem = (cart: CartItem[], id: number): CartItem[] =>
 export const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
     case ADD_ITEM: {
-      const updatedCart = [...state.cart];
-      const existingItem = getItem(updatedCart, action.payload.id);
+      const existingItem = getItem(state.cart, action.payload.id);
 
       if (existingItem) {
-        existingItem.qty += 1;
-      } else {
-        updatedCart.unshift({item: action.payload, qty: 1});
+        return {
+          ...state,
+          cart: state.cart.map(c =>
+            c.item.id === action.payload.id ? {...c, qty: c.qty + 1} : c
+          ),
+        };
       }
 
-      return {...state, cart: updatedCart};
+      return {...state, cart: [{item: action.payload, qty: 1}, ...state.cart]};
     }
     case DEL_ITEM: {
-      const updatedCart = [...state.cart];
-      const existingItem = getItem(updatedCart, action.payload.item.id);
+      const existingItem = getItem(state.cart, action.payload.item.id);
 
-      if (existingItem) {
-        existingItem.qty -= 1;
-        if (existingItem.qty === 0) {
-          return {...state, cart: deleteItem(updatedCart, action.payload.item.id)};
-        }
+      if (!existingItem) return state;
+
+      if (existingItem.qty === 1) {
+        return {...state, cart: deleteItem(state.cart, action.payload.item.id)};
       }
 
-      return {...state, cart: updatedCart};
+      return {
+        ...state,
+        cart: state.cart.map(c =>
+          c.item.id === action.payload.item.id ? {...c, qty: c.qty - 1} : c
+        ),
+      };
     }
     case CLEAR_ITEMS:
       return {...state, cart: []};
