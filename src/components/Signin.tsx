@@ -27,10 +27,6 @@ export const Signin: React.FC = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      username: data.get('username'),
-      password: data.get('password'),
-    });
     dispatch(signinUsername(data.get('username') as string));
     navigate('/shop');
   };

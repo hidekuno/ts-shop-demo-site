@@ -28,7 +28,7 @@ const makeOrder = (order: OrderEntry): OrderItem => {
   // I am currently considering using crypto.randomUUID().
   // So the following code may become obsolete.
   const random = (min: number, max: number, digit: number): string =>
-    (Math.floor(Math.random() * (max + min))).toString().padStart(digit, '0');
+    (Math.floor(Math.random() * (max - min)) + min).toString().padStart(digit, '0');
 
   const orderno: string = random(1, 1000, 3) + '-' + random(1, 10000000, 7) + '-' + random(1, 10000000, 7);
   return {orderno, orderDatetime:getNow(), total: order.total, payment: order.payment, detail: order.detail};
