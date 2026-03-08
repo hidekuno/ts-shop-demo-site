@@ -4,7 +4,7 @@
  * hidekuno@gmail.com
  *
  */
-import React, {useRef, useState, useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {CSSProperties} from '@mui/material/styles/createTypography';
 import Delete from '@mui/icons-material/Delete';
 import AddCircle from '@mui/icons-material/AddCircle';
@@ -26,8 +26,9 @@ import {CartContext, ShopContext} from '../store';
 import {addOrder} from '../actions/shopAction';
 import {COMPLETE_MESSAGE, NOCART_MESSAGE} from '../constants';
 import {clearToCart, delPoint, addPoint, addToCart, delToCart} from '../actions/cartAction';
-import {CartAction, CartState}  from '../reducers/cartReducer';
-import {CartItem} from '../store';
+import {CartItem, MusicItem} from '../types';
+import {useCartCalculations} from '../hooks/useCartCalculations';
+import {useFormValidation} from '../hooks/useFormValidation';
 
 const cartClass: CSSProperties = {
   margin: '0.5rem',
@@ -41,107 +42,94 @@ const dialogClass: CSSProperties = {
   mx: 0.5,
   fontSize: 16,
 };
-class Sale {
-  cartItems: CartItem[];
 
-  userPoint: number;
+// Sub-component extracted within the same file for simplicity, 
+// though ideally should be in its own file.
+const CartItemRow: React.FC<{
+    item: CartItem;
+    onAdd: (item: MusicItem) => void;
+    onDelete: (item: CartItem) => void;
+}> = ({item, onAdd, onDelete}) => (
+  <Container
+    sx={{display: 'flex', alignItems: 'center', margin: '0.1rem'}}>
+    <img src={item.item.imageUrl} width='45px' height='45px' alt={item.item.title} />
+    <Container sx={{width: '600px', marginLeft: '0.2rem'}}>
+      <p className='cart_item'>{item.item.title}</p>
+    </Container>
+    <p className='cart_artist'>{item.item.artist}</p>
+    <p className='cart_price'>${item.item.price}</p>
+    <p className='cart_qty'>{item.qty}</p>
+    <IconButton
+      aria-label="Delete"
+      color='primary'
+      size='small'
+      onClick={() => onDelete(item)}>
+      <Delete />
+    </IconButton>
+    <IconButton
+      aria-label="Add"
+      color='primary'
+      size='small'
+      disabled={item.item.stock <= item.qty}
+      onClick={() => onAdd(item.item)}>
+      <AddCircle />
+    </IconButton>
+  </Container>
+);
 
-  totalPrices: number;
-
-  constructor(state: CartState) {
-    this.cartItems = state.cart;
-    this.userPoint = state.point;
-    this.totalPrices = this.cartItems.map((c) => c.item.price * c.qty).reduce((a, b) => a + b, 0);
-  }
-
-  calcTotalPrices(checked: boolean): number {
-    const result = checked ? this.totalPrices - this.userPoint : this.totalPrices;
-    return result < 0 ? 0 : result;
-  }
-
-  calcPoint(checked: boolean): number {
-    const result = checked ? this.userPoint - this.totalPrices : this.userPoint;
-    return result < 0 ? 0 : result;
-  }
-
-  dispatchWrap(dispatch: React.Dispatch<CartAction>, checked: boolean): void {
-    if (checked) {
-      dispatch(delPoint(this.totalPrices));
-    } else {
-      dispatch(addPoint(Math.floor(this.totalPrices / 10)));
-    }
-    dispatch(clearToCart());
-  }
-}
-class TextValidation {
-  value: string;
-
-  setValue: React.Dispatch<React.SetStateAction<string>>;
-
-  error: boolean;
-
-  setError: React.Dispatch<React.SetStateAction<boolean>>;
-
-  ref: React.RefObject<HTMLInputElement|null>;
-
-  constructor(value: [string,React.Dispatch<React.SetStateAction<string>>],
-    error: [boolean, React.Dispatch<React.SetStateAction<boolean>>],
-    ref: React.RefObject<HTMLInputElement|null>) {
-    this.value = value[0];
-    this.setValue = value[1];
-    this.error = error[0];
-    this.setError = error[1];
-    this.ref = ref;
-  }
-
-  validateText(): boolean {
-    const v = this.ref.current!.validity.valid;
-    this.setError(!v);
-    return v;
-  }
-
-  handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): boolean {
-    this.setValue(e.target.value);
-    return this.validateText();
-  }
-
-  helpText(): string | undefined {
-    return this.error ? this.ref.current!.validationMessage : undefined;
-  }
-}
 export const Cart: React.FC = () => {
   const {state, dispatch} = useContext(CartContext);
   const dispatchShop = useContext(ShopContext).dispatch;
 
   const [open, setOpen] = useState(false);
-  const [checked, setChecked] = useState(false);
   const [message, setMessage] = useState('');
 
-  const sale = new Sale(state);
-  const mailAddr = new TextValidation(useState(''), useState(false), useRef<HTMLInputElement|null>(null));
-  const recipientAddr = new TextValidation(useState(''), useState(false),useRef<HTMLInputElement|null>(null));
+  const {
+    checked,
+    setChecked,
+    totalPrices,
+    calcTotalPayment,
+    calcRemainingPoint,
+    calcEarnedPoint
+  } = useCartCalculations(state.cart, state.point);
+
+  const mailAddr = useFormValidation('');
+  const recipientAddr = useFormValidation('');
 
   const initUi = (): void => {
     setChecked(false);
     setOpen(false);
+    // Resetting form values or validation state is tricky here without exposing reset methods
+    // from useFormValidation, but for now we keep the values as per original logic/UX pattern.
+    // If reset is needed:
+    // mailAddr.setValue(''); mailAddr.setError(false);
+    // recipientAddr.setValue(''); recipientAddr.setError(false);
   };
 
   const handleOk = (): void => {
-    const validate = (): boolean => {
-      let v = mailAddr.validateText();
-      v &&= recipientAddr.validateText();
-      return v;
-    };
-    if (!validate()) {
+    const isMailValid = mailAddr.validate();
+    const isAddrValid = recipientAddr.validate();
+
+    if (!isMailValid || !isAddrValid) {
       return;
     }
-    sale.dispatchWrap(dispatch, checked);
+
+    if (checked) {
+      dispatch(delPoint(totalPrices));
+    } else {
+      dispatch(addPoint(calcEarnedPoint(false))); // Logic based on original code
+    }
+    dispatch(clearToCart());
     initUi();
-    dispatchShop(addOrder({total: sale.totalPrices, payment: sale.calcTotalPrices(checked), detail: sale.cartItems}));
+    dispatchShop(addOrder({
+      total: totalPrices,
+      payment: calcTotalPayment(checked),
+      detail: state.cart
+    }));
     setMessage(COMPLETE_MESSAGE);
   };
 
-  if (sale.cartItems.length === 0) {
+  if (state.cart.length === 0) {
     return (
       <Container sx={cartClass}>
         <Dialog open={message !== ''} onClose={() => setMessage('')}>
@@ -158,39 +146,19 @@ export const Cart: React.FC = () => {
     );
   }
 
-  const cart = sale.cartItems.map((c: CartItem) => (
-    <Container
-      key={c.item.id}
-      sx={{display: 'flex', alignItems: 'center', margin: '0.1rem'}}>
-      <img src={c.item.imageUrl} width='45px' height='45px' alt={c.item.title} />
-      <Container sx={{width: '600px', marginLeft: '0.2rem'}}>
-        <p className='cart_item'>{c.item.title}</p>
-      </Container>
-      <p className='cart_artist'>{c.item.artist}</p>
-      <p className='cart_price'>${c.item.price}</p>
-      <p className='cart_qty'>{c.qty}</p>
-      <IconButton
-        aria-label="Delete"
-        color='primary'
-        size='small'
-        onClick={() => { dispatch(delToCart(c)); }}>
-        <Delete />
-      </IconButton>
-      <IconButton
-        aria-label="Add"
-        color='primary'
-        size='small'
-        disabled={c.item.stock <= c.qty}
-        onClick={() => { dispatch(addToCart(c.item)); }}>
-        <AddCircle />
-      </IconButton>
-    </Container>
-  ));
-
   return (
     <Container sx={cartClass}>
       <p className='cart_title'>In your cart</p>
-      <Container sx={{marginTop: '0.1rem'}}>{cart}</Container>
+      <Container sx={{marginTop: '0.1rem'}}>
+        {state.cart.map((c: CartItem) => (
+          <CartItemRow
+            key={c.item.id}
+            item={c}
+            onAdd={(item) => dispatch(addToCart(item))}
+            onDelete={(item) => dispatch(delToCart(item))}
+          />
+        ))}
+      </Container>
       <Container
         sx={{
           marginTop: '0.5rem',
@@ -200,7 +168,7 @@ export const Cart: React.FC = () => {
           justifyContent: 'flex-end',
           alignItems: 'center'
         }}>
-        Total Amount: ${sale.totalPrices}
+        Total Amount: ${totalPrices}
         <Button
           variant='outlined'
           color='primary'
@@ -214,10 +182,10 @@ export const Cart: React.FC = () => {
         <DialogTitle>{'Confirm'}</DialogTitle>
         <DialogContent>
           <DialogContentText sx={dialogClass}>
-            <span style={{color: '#1976d2'}}> Your Point: ${sale.calcPoint(checked)} </span>
+            <span style={{color: '#1976d2'}}> Your Point: ${calcRemainingPoint(checked)} </span>
             <FormControlLabel
               sx={{paddingLeft: '1rem'}}
-              disabled={sale.userPoint <= 0}
+              disabled={state.point <= 0}
               control={<Switch checked={checked} onChange={(e) => setChecked(e.target.checked)} name='points' />}
               label='Use Points' />
           </DialogContentText>
@@ -232,9 +200,9 @@ export const Cart: React.FC = () => {
               inputRef={mailAddr.ref}
               value={mailAddr.value}
               error={mailAddr.error}
-              helperText={mailAddr.helpText()}
+              helperText={mailAddr.helperText}
               inputProps={{required: true}}
-              onChange={(e) => { mailAddr.handleChange(e); } }
+              onChange={mailAddr.handleChange}
               required />
             <TextField
               id='recipient-address'
@@ -245,15 +213,15 @@ export const Cart: React.FC = () => {
               inputRef={recipientAddr.ref}
               value={recipientAddr.value}
               error={recipientAddr.error}
-              helperText={recipientAddr.helpText()}
+              helperText={recipientAddr.helperText}
               inputProps={{required: true}}
-              onChange={(e) => { recipientAddr.handleChange(e); } }
+              onChange={recipientAddr.handleChange}
               required />
           </FormGroup>
         </DialogContent>
         <DialogContent>
           <DialogContentText sx={{...dialogClass, color: 'success.dark'}}>
-            Total Amount: ${sale.calcTotalPrices(checked)}
+            Total Amount: ${calcTotalPayment(checked)}
           </DialogContentText>
           <DialogContentText sx={{marginTop: '1.5rem', textAlign: 'center'}}>
             Would you like to buy?

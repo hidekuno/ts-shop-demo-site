@@ -62,7 +62,7 @@ describe('unit test', () => {
     });
     expect(screen.queryByAltText('Would you like to buy?')).not.toBeInTheDocument();
     const textMail = screen.getByRole('textbox', {name: 'Email'});
-    expect(screen.queryByText('Constraints not satisfied')).toBeInTheDocument();
+    expect(screen.queryAllByText('Constraints not satisfied')[0]).toBeInTheDocument();
     expect(textMail).toBeInvalid();
   });
   test('email format validate test', async () => {
@@ -80,7 +80,7 @@ describe('unit test', () => {
       fireEvent.click(screen.getByRole('button', {name: 'OK'}));
     });
     expect(screen.queryByAltText('Would you like to buy?')).not.toBeInTheDocument();
-    expect(screen.queryByText('Constraints not satisfied')).toBeInTheDocument();
+    expect(screen.queryAllByText('Constraints not satisfied')[0]).toBeInTheDocument();
     expect(textMail).toBeInvalid();
   });
   test('address format validate test', async () => {
@@ -98,7 +98,7 @@ describe('unit test', () => {
       fireEvent.click(screen.getByRole('button', {name: 'OK'}));
     });
     expect(screen.queryByAltText('Would you like to buy?')).not.toBeInTheDocument();
-    expect(screen.queryByText('Constraints not satisfied')).toBeInTheDocument();
+    expect(screen.queryAllByText('Constraints not satisfied')[0]).toBeInTheDocument();
     const textAddr = screen.getByRole('textbox', {name: 'Address'});
     expect(textAddr).toBeInvalid();
   });
