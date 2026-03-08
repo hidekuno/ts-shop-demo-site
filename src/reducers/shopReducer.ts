@@ -5,7 +5,8 @@
  *
  */
 import {ADD_ORDER, SIGNIN_USERNAME, ADD_VIEWED} from '../constants';
-import {OrderItem,OrderEntry,ViewedItem,MusicItem} from '../store';
+import {OrderItem, OrderEntry, ViewedItem, MusicItem} from '../types';
+import {getNow, generateUUID} from '../utils';
 
 export interface ShopState {
   username: string;
@@ -18,20 +19,8 @@ export type ShopAction =
   | {type: 'ADD_ORDER'; payload: {order: OrderEntry}}
   | {type: 'ADD_VIEWED'; payload: MusicItem};
 
-const getNow = (): string => {
-  const d = new Date();
-  return d.toLocaleDateString('sv-SE') + ' ' + d.toLocaleTimeString('sv-SE');
-};
-
 const makeOrder = (order: OrderEntry): OrderItem => {
-
-  // I am currently considering using crypto.randomUUID().
-  // So the following code may become obsolete.
-  const random = (min: number, max: number, digit: number): string =>
-    (Math.floor(Math.random() * (max - min)) + min).toString().padStart(digit, '0');
-
-  const orderno: string = random(1, 1000, 3) + '-' + random(1, 10000000, 7) + '-' + random(1, 10000000, 7);
-  return {orderno, orderDatetime:getNow(), total: order.total, payment: order.payment, detail: order.detail};
+  return {orderno: generateUUID(), orderDatetime: getNow(), total: order.total, payment: order.payment, detail: order.detail};
 };
 
 export const shopReducer = (state: ShopState, action: ShopAction): ShopState => {
@@ -55,8 +44,7 @@ export const shopReducer = (state: ShopState, action: ShopAction): ShopState => 
           ...state.views,
         ]
       };
-    // It's dead code
-    // default:
-    //  throw new Error('No such action type');
+    default:
+      return state;
   }
 };
