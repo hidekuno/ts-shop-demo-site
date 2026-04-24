@@ -1,0 +1,5 @@
+*.pyc
+*.db
+.pytest_cache
+license.txt
+.venv
